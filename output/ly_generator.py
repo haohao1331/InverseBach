@@ -19,6 +19,9 @@ class Generator:
     def write(self):
         self.file.write(self.content)
 
+    def close(self):
+        self.file.close()
+
     def build(self):
         call(["lilypond", self.path])
 
