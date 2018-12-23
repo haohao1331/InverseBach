@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/InverseBach.iml" filepath="$PROJECT_DIR$/.idea/InverseBach.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/IB.iml" filepath="$PROJECT_DIR$/.idea/IB.iml" />
     </modules>
   </component>
 </project>

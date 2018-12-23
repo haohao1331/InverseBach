@@ -1,3 +1,9 @@
+
+import random
+from menuet.py import Menuet
+from measure.py import Measure
+from note.py import Note
+from measure.py import NoteList
 from output import ly_generator
 import os
 
@@ -11,3 +17,9 @@ g.write()
 
 
 os.system("lilypond score.ly")
+
+
+A=Menuet()
+A.get()
+print(5)
+
