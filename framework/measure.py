@@ -4,12 +4,13 @@ import random
 
 class Measure:
 
-    def __init__(self, location, chord):
+    def __init__(self, location, chord,trans_measure):
         self.location = location
         self.beat = 3
         self.chord_progression = chord  # only one chord per bar
         self.top_notes = NoteList(self.beat)
         self.bot_notes = NoteList(self.beat)
+        self.trans_measure=trans_measure        # True or False
 
     def add_chord_note(self):
         if self.location%10==4:
@@ -36,6 +37,9 @@ class Measure:
     def get_bot_notes(self):
         return self.bot_notes
 
+    def is_trans_measure(self):
+        return self.trans_measure
+
 
 class NoteList:
 
@@ -49,8 +53,23 @@ class NoteList:
         self.notes.append(note)
         return True
 
+    def beat(self):
+        return self.beat
+
+    def length(self):
+        return self.length
+
+    def get_notes(self):
+        return self.notes
+
     def print_notes(self):
         notes=[]
         for i in range(0,len(self.notes),1):
             notes = notes + [self.notes[i].frequency()]
+        return notes
+
+    def print_notes_name(self):
+        notes=[]
+        for i in range(0,len(self.notes),1):
+            notes=notes+[self.notes[i].name()]
         return notes
