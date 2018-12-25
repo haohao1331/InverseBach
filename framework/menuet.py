@@ -92,10 +92,26 @@ class Menuet:
         return True
 
     def gen_passing(self):
-        pass
+        notes=[]
+        motives=[]
+        for i in range(0,len(self.content),1):
+            notes=notes+[[]]
+            for g in range(0, len(self.content[i].get_top_notes().get_notes()), 1):
+                notes[i]=notes[i]+[self.content[i].get_top_notes().get_notes()[g].frequency()]
+        print(notes)
+
+        for i in range(0,len(self.content),1):
+            if self.content[i].get_location() == 34:
+                self.content[i].get_top_notes().get_notes()[0].set_length(1)
+                # setting the chord note to length 2
+                previous=self.content[i].get_top_notes().get_notes()[0]
+                # self.content[i].get_top_notes().get_notes()=self.content[i].get_top_notes().get_notes()+[Note(previous.frequency()-1,2,False)]
+
 
     def gen_harmony(self):
-        pass
+        for i in range(0,len(self.content),1):
+            self.content[i].add_harmony()
+        return True
 
     def generate(self):
         self.chord1()
@@ -103,7 +119,7 @@ class Menuet:
         self.chord3()
         self.chord4()
         self.set_chord_note()
-        self.gen_passing()
+        # self.gen_passing()
         self.gen_harmony()
         self.to_printable_format()
         return True
@@ -137,20 +153,30 @@ class Menuet:
                     if self.content[i].get_top_notes().get_notes()[g].frequency()>=8:
                         name = transkey_notes[self.content[i].get_top_notes().get_notes()[g].frequency()-8] + '\''
                         self.content[i].get_top_notes().get_notes()[g].set_name(name)
-                        print(self.content[i].get_top_notes().get_notes()[g].frequency(),name)
+                        print("top ",self.content[i].get_top_notes().get_notes()[g].frequency(),name)
                     else:
                         name = transkey_notes[self.content[i].get_top_notes().get_notes()[g].frequency()-1] +'\''
                         self.content[i].get_top_notes().get_notes()[g].set_name(name)
-                        print(self.content[i].get_top_notes().get_notes()[g].frequency(), name)
+                        print("top ",self.content[i].get_top_notes().get_notes()[g].frequency(), name)
                 else:
                     if self.content[i].get_top_notes().get_notes()[g].frequency()>=8:
                         name = key_notes[self.content[i].get_top_notes().get_notes()[g].frequency()-8]+'\''
                         self.content[i].get_top_notes().get_notes()[g].set_name(name)
-                        print(self.content[i].get_top_notes().get_notes()[g].frequency(), name)
+                        print("top ",self.content[i].get_top_notes().get_notes()[g].frequency(), name)
                     else:
                         name = key_notes[self.content[i].get_top_notes().get_notes()[g].frequency()-1]+'\''
                         self.content[i].get_top_notes().get_notes()[g].set_name(name)
-                        print(self.content[i].get_top_notes().get_notes()[g].frequency(), name)
+                        print("top ",self.content[i].get_top_notes().get_notes()[g].frequency(), name)
+        for i in range(0, len(self.content), 1):      # iteration for one measure
+            for g in range(0, len(self.content[i].get_bot_notes().get_notes()), 1):     # iteration for bot notes
+                if self.content[i].is_trans_measure():
+                    name = transkey_notes[self.content[i].get_bot_notes().get_notes()[g].frequency()-1]
+                    self.content[i].get_bot_notes().get_notes()[g].set_name(name)
+                    print("bot ", self.content[i].get_bot_notes().get_notes()[g].frequency(), name)
+                else:
+                    name = key_notes[self.content[i].get_bot_notes().get_notes()[g].frequency() - 1]
+                    self.content[i].get_bot_notes().get_notes()[g].set_name(name)
+                    print("bot ", self.content[i].get_bot_notes().get_notes()[g].frequency(), name)
 
     def get(self):
         print("key is" ,self.key)
@@ -162,8 +188,12 @@ class Menuet:
         return True
 
     def get_notes(self):
+        print("Top notes are: ")
         for i in range(0,len(self.content),1):
             print(self.content[i].get_top_notes().print_notes())
+        print("Bot notes are: ")
+        for i in range(0,len(self.content),1):
+            print(self.content[i].get_bot_notes().print_notes())
         return True
 
     def get_notes_name(self):

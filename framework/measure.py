@@ -26,6 +26,11 @@ class Measure:
             # corresponds to the three chord notes of a bar
         return True
 
+    def add_harmony(self):
+        note = Note(self.chord_progression,3,True)
+        self.bot_notes.add_chord_note(note)
+        return True
+
     def get(self):
         pass
 
@@ -37,6 +42,9 @@ class Measure:
 
     def get_bot_notes(self):
         return self.bot_notes
+
+    def get_location(self):
+        return self.location
 
     def is_trans_measure(self):
         return self.trans_measure
