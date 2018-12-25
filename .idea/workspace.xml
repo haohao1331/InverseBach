@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="09db3d87-402a-4517-a201-afb0a2e57d85" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/framework/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/measure.py" beforeDir="false" afterPath="$PROJECT_DIR$/framework/measure.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/menuet.py" beforeDir="false" afterPath="$PROJECT_DIR$/framework/menuet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/note.py" beforeDir="false" afterPath="$PROJECT_DIR$/framework/note.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/output/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/convert_to_score.py" beforeDir="false" afterPath="$PROJECT_DIR$/output/convert_to_score.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/output/ly_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/output/ly_generator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/score.ly" beforeDir="false" afterPath="$PROJECT_DIR$/score.ly" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/score.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/score.pdf" afterDir="false" />
-    </list>
+    <list default="true" id="09db3d87-402a-4517-a201-afb0a2e57d85" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -327,12 +313,12 @@
       <option name="presentableId" value="Default" />
       <updated>1545674434590</updated>
       <workItem from="1545674435696" duration="9587000" />
-      <workItem from="1545752383630" duration="7409000" />
+      <workItem from="1545752383630" duration="7864000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16996000" />
+    <option name="totallyTimeSpent" value="17451000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
