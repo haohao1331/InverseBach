@@ -3,8 +3,8 @@ from subprocess import call
 
 class Generator:
 
-    def __init__(self):
-        self.path = ""
+    def __init__(self, path=""):
+        self.path = path
         self.file = None
         self.content = ""
 
@@ -16,14 +16,15 @@ class Generator:
     def add(self, score):
         self.content = self.content[0:len(self.content)-1] + score + '}'
 
-    def addMenuet(self, menuet):
-
-
     def write(self):
         self.file.write(self.content)
 
     def close(self):
         self.file.close()
+
+    def write_and_close(self):
+        self.write()
+        self.close()
 
     def build(self):
         call(["lilypond", self.path])

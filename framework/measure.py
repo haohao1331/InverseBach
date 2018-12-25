@@ -1,4 +1,4 @@
-from note import *
+from framework.note import *
 import random
 
 

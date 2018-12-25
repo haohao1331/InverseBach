@@ -1,10 +1,10 @@
 class Note:
 
-    def __init__(self, frequency, name, length, chord_note):
+    def __init__(self, frequency, length, chord_note):
         self._chord_note = chord_note
         self._frequency = frequency
         self._length = length
-        self._name = name
+        self._name = ""
 
     def set_frequency(self, frequency):
         self._frequency = frequency
@@ -22,7 +22,7 @@ class Note:
         return self._length
 
     def name(self):
-        return self.name
+        return self._name
 
     def is_chord_note(self):
         return self._chord_note

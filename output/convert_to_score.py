@@ -5,48 +5,55 @@ class Converter:
 
     def __init__(self, raw):
         self.raw = raw
-        self.res = ""
 
     def convert_menuet(self):
 
-        self.res += "\\time 3/4\n\\key " + self.raw.get_key() + " \\major\n"
-        self.res += "<<\n"
+        length_map = {1: '4', 2: '2', 3: '2.', 0.5: '8', 1.5: '4.'}
 
+        res = ""
+        res += "\\new PianoStaff \n<< "
+        res += "\\new Staff { "
+
+        men = self.raw.get_content()
+
+        res += "\\time 3/4 \\clef \"treble\" \\key " + self.raw.get_key() + " \\major "
+
+        length = 0
         for row in range(4):
-            self.res += "\\new Staff {"
-            self.res += "\\clef \"treble\" "
+
             for column in range(4):
-                measure = self.raw.get_content()[row*4+column]
-                length = 0
-                for note in measure.get_top_notes():
-                    self.res += note.name()
-                    if length != note.length():
-                        length = note.length()
-                        self.res += length
-                    self.res += ' '
+                msr = men[row*4+column]
 
-                self.res += '| '
-            self.res += '}\n'
+                for n in msr.get_top_notes():
+                    res += n.name()
+                    if length != n.length():
+                        length = n.length()
+                        res += length_map[length]
+                    res += ' '
 
-            self.res += "\\new Staff {"
-            self.res += "\\clef \"bass\" "
+            if row != 3:
+                res += '\\break '
+
+        res += '}\n'
+
+        res += "\\new Staff { \\clef \"bass\" "
+
+        length = 0
+        for row in range(4):
+
             for column in range(4):
-                measure = self.raw.get_content()[row * 4 + column]
-                length = 0
-                for note in measure.get_bot_notes():
-                    self.res += note.name()
-                    if length != note.length():
-                        length = note.length()
-                        self.res += length
-                    self.res += ' '
+                msr = men[row * 4 + column]
 
-                self.res += '| '
-            self.res += '}\n'
-            self.res += '>>\n'
+                for n in msr.get_top_notes():
+                    res += n.name()
+                    if length != n.length():
+                        length = n.length()
+                        res += length_map[length]
+                    res += ' '
 
-    def convert(self):
-        keys=['c','g','d','a','e','b','fis','des','aes','ees','bes','f']
-        key=keys[self.raw.get_key()-1]
-        transkey=keys[self.raw.get_transkey()+self.raw]
+            if row != 3:
+                res += '\\break '
 
+        res += '} >>'
 
+        return res

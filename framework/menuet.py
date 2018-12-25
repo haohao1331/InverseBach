@@ -1,4 +1,4 @@
-from measure import *
+from framework.measure import *
 import random
 
 class Menuet:
@@ -120,15 +120,15 @@ class Menuet:
             if self.transkey==names[i]:
                 transkey_index=i
                 break
-        if key_index==-1 or transkey_index==-1:
-            print("False in matching key list")
+        # if key_index==-1 or transkey_index==-1:
+            # print("False in matching key list")
         key_notes=[]
         transkey_notes=[]
         for i in [0, 2, 4, 5, 7, 9, 11]:       # for major scales only
             key_notes=key_notes+[names[key_index+i]]
             transkey_notes=transkey_notes+[names[transkey_index+i]]
-        print("key_notes: ",key_notes)
-        print("transkey_notes ",transkey_notes)
+        # print("key_notes: ",key_notes)
+        # print("transkey_notes ",transkey_notes)
         key_notes=key_notes*2
         transkey_notes=transkey_notes*2
         for i in range(0, len(self.content), 1):      # iteration for one measure
@@ -137,28 +137,28 @@ class Menuet:
                     if self.content[i].get_top_notes().get_notes()[g].frequency()>=8:
                         name = transkey_notes[self.content[i].get_top_notes().get_notes()[g].frequency()-8] + '\''
                         self.content[i].get_top_notes().get_notes()[g].set_name(name)
-                        print(self.content[i].get_top_notes().get_notes()[g].frequency(),name)
+                        # print(self.content[i].get_top_notes().get_notes()[g].frequency(),name)
                     else:
-                        name = transkey_notes[self.content[i].get_top_notes().get_notes()[g].frequency()-1] +'\''
+                        name = transkey_notes[self.content[i].get_top_notes().get_notes()[g].frequency()-1] + '\''
                         self.content[i].get_top_notes().get_notes()[g].set_name(name)
-                        print(self.content[i].get_top_notes().get_notes()[g].frequency(), name)
+                        # print(self.content[i].get_top_notes().get_notes()[g].frequency(), name)
                 else:
                     if self.content[i].get_top_notes().get_notes()[g].frequency()>=8:
                         name = key_notes[self.content[i].get_top_notes().get_notes()[g].frequency()-8]+'\''
                         self.content[i].get_top_notes().get_notes()[g].set_name(name)
-                        print(self.content[i].get_top_notes().get_notes()[g].frequency(), name)
+                        # print(self.content[i].get_top_notes().get_notes()[g].frequency(), name)
                     else:
                         name = key_notes[self.content[i].get_top_notes().get_notes()[g].frequency()-1]+'\''
                         self.content[i].get_top_notes().get_notes()[g].set_name(name)
-                        print(self.content[i].get_top_notes().get_notes()[g].frequency(), name)
+                        # print(self.content[i].get_top_notes().get_notes()[g].frequency(), name)
 
     def get(self):
-        print("key is" ,self.key)
-        print("transkey is",self.transkey)
+        # print("key is" ,self.key)
+        # print("transkey is",self.transkey)
         measure_chord_progressions=[]
         for i in range(0,len(self.content), 1):
             measure_chord_progressions=measure_chord_progressions+[(self.content[i]).get_chord_progression()]
-        print("the chord progression is ", measure_chord_progressions)
+        # print("the chord progression is ", measure_chord_progressions)
         return True
 
     def get_notes(self):
@@ -169,10 +169,12 @@ class Menuet:
     def get_content(self):
         return self.content
 
+    '''
     def get_notes_name(self):
         for i in range(0,len(self.content),1):
             print(self.content[i].get_top_notes().print_notes_name())
         return True
+    '''
 
     def get_key(self):
         return self.key
