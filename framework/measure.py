@@ -23,6 +23,7 @@ class Measure:
             self.top_notes.add_chord_note(note1)
             self.top_notes.add_chord_note(note2)
             self.top_notes.add_chord_note(note3)
+            # corresponds to the three chord notes of a bar
         return True
 
     def get(self):
