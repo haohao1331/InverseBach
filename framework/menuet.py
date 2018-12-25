@@ -4,25 +4,29 @@ import random
 class Menuet:
 
     def __init__(self, key=-1, transkey=0):
-        keys = ['f','c', 'g', 'd', 'a', 'e', 'b', 'ges', 'des', 'aes', 'ees', 'bes', 'f','c']
-        index = random.randint(1,12)
-        self.key=key
-        self.transkey=transkey
+        keys = ['f', 'c', 'g', 'd', 'a', 'e', 'b', 'ges', 'des', 'aes', 'ees', 'bes', 'f','c']
+        index = random.randint(1, 12)
+        self.key = key
+        self.transkey = transkey
         if self.key==-1:
             self.key=keys[index]
             if self.transkey == 0:
-                self.transkey = keys[random.choice([1, -1]) + index]
+                transkey_index=random.choice([1, -1])
+                self.transkey = keys[transkey_index + index]
             else:
-                self.transkey = keys[index + transkey]
+                transkey_index = transkey
+                self.transkey = keys[index + transkey_index]
         else:
             self.key=keys[key]
             self.transkey = transkey    #the key that we are transposing to, int value of [-2,-1,+1,+2], cannot be zero
             if self.transkey == 0:
-                self.transkey = keys[random.choice([1, -1]) + key]
+                transkey_index = random.choice([1, -1])
+                self.transkey = keys[transkey_index + key]
             else:
-                self.transkey = keys[key + transkey]
-
-        self.content=[]
+                transkey_index = transkey
+                self.transkey = keys[key + transkey_index]
+        self.transkey_index = transkey_index
+        self.content = []
 
 
     def chord1(self):
@@ -35,32 +39,30 @@ class Menuet:
         return True
 
     def chord2(self):
-        choices=[-1,1]  # can be extended to 2 sharps or flats
-        if self.transkey == 0:
-            self.transkey=random.choice(choices)
-        if self.transkey==1:
-            choices=[5,6]   # the available transition chordes for the line
-            transchord=random.choice(choices)
-            m1 = Measure(21, 1,False)
-            m2 = Measure(22, transchord,False)
-            m3 = Measure(23, 5,True)     # based on transkey
-            m4 = Measure(24, 1,True)     # based on transkey
+        # choosing which key to transpose to will happen in the init function
+        if self.transkey_index == 1:
+            choices = [5, 6]   # the available transition chordes for the line
+            transchord = random.choice(choices)
+            m1 = Measure(21, 1, False)
+            m2 = Measure(22, transchord, False)
+            m3 = Measure(23, 5, True)     # based on transkey
+            m4 = Measure(24, 1, True)     # based on transkey
             self.content = self.content + [m1, m2, m3, m4]
             return True
-        elif self.transkey==-1:
-            choices=[2,4]   # the available transition chordes for the line
+        elif self.transkey_index == -1:
+            choices = [2, 4]   # the available transition chordes for the line
             transchord = random.choice(choices)
-            m1 = Measure(21, 1,False)
-            m2 = Measure(22, transchord,False)
-            m3 = Measure(23, 5,True)  # based on transkey
-            m4 = Measure(24, 1,True)  # based on transkey
+            m1 = Measure(21, 1, False)
+            m2 = Measure(22, transchord, False)
+            m3 = Measure(23, 5, True)  # based on transkey
+            m4 = Measure(24, 1, True)  # based on transkey
             self.content = self.content + [m1, m2, m3, m4]
             return True
         # we can also do cases where transkey=2,-2
 
     def chord3(self):
         sequence=random.choice([False])     # need to include True case
-        if (sequence) and (self.transkey==1):
+        if sequence and (self.transkey == 1):
             m1 = Measure(31, 1,True)     # based on transkey
             m2 = Measure(32, 6,True)     # based on transkey
             m3 = Measure(33, 1,False)
@@ -108,8 +110,8 @@ class Menuet:
 
     def to_printable_format(self):
         names = ['c','des','d','ees','e','f','ges','g','aes','a','bes','b']*2
-        key_index=-1;
-        transkey_index=-1;
+        key_index=-1
+        transkey_index=-1
         for i in range(0,len(names),1):
             if self.key==names[i]:
                 key_index=i
@@ -127,26 +129,28 @@ class Menuet:
             transkey_notes=transkey_notes+[names[transkey_index+i]]
         print("key_notes: ",key_notes)
         print("transkey_notes ",transkey_notes)
+        key_notes=key_notes*2
+        transkey_notes=transkey_notes*2
         for i in range(0, len(self.content), 1):      # iteration for one measure
             for g in range(0, len(self.content[i].get_top_notes().get_notes()), 1):       # iteration for the top notes
                 if self.content[i].is_trans_measure():
                     if self.content[i].get_top_notes().get_notes()[g].frequency()>=8:
-                        name = transkey_notes[self.content[i].get_top_notes().get_notes()[g].frequency()-7]
+                        name = transkey_notes[self.content[i].get_top_notes().get_notes()[g].frequency()-8] + '\''
                         self.content[i].get_top_notes().get_notes()[g].set_name(name)
-                        print(name)
+                        print(self.content[i].get_top_notes().get_notes()[g].frequency(),name)
                     else:
-                        name = transkey_notes[self.content[i].get_top_notes().get_notes()[g].frequency()]
+                        name = transkey_notes[self.content[i].get_top_notes().get_notes()[g].frequency()-1] +'\''
                         self.content[i].get_top_notes().get_notes()[g].set_name(name)
-                        print(name)
+                        print(self.content[i].get_top_notes().get_notes()[g].frequency(), name)
                 else:
                     if self.content[i].get_top_notes().get_notes()[g].frequency()>=8:
-                        name = key_notes[self.content[i].get_top_notes().get_notes()[g].frequency()-7]
+                        name = key_notes[self.content[i].get_top_notes().get_notes()[g].frequency()-8]+'\''
                         self.content[i].get_top_notes().get_notes()[g].set_name(name)
-                        print(name)
+                        print(self.content[i].get_top_notes().get_notes()[g].frequency(), name)
                     else:
-                        name = transkey_notes[self.content[i].get_top_notes().get_notes()[g].frequency()]
+                        name = key_notes[self.content[i].get_top_notes().get_notes()[g].frequency()-1]+'\''
                         self.content[i].get_top_notes().get_notes()[g].set_name(name)
-                        print(name)
+                        print(self.content[i].get_top_notes().get_notes()[g].frequency(), name)
 
     def get(self):
         print("key is" ,self.key)
