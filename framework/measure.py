@@ -43,6 +43,7 @@ class NoteList:
         self.beat = beat
         self.length = 0
         self.notes = []
+        self.index = 0
 
     def add_chord_note(self, note):
         self.length += note.length()
@@ -54,3 +55,16 @@ class NoteList:
         for i in range(0,len(self.notes),1):
             notes = notes + [self.notes[i].frequency()]
         return notes
+
+    def __next__(self):
+        if self.index >= len(self.notes):
+            raise StopIteration
+        ret = self.notes[self.index]
+        self.index += 1
+        return ret
+
+    def __iter__(self):
+        return self
+
+    def __getitem__(self, item):
+        return self.notes[item]

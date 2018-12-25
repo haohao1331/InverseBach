@@ -108,3 +108,9 @@ class Menuet:
         for i in range(0,len(self.content),1):
             print(self.content[i].get_top_notes().print_notes())
         return True
+
+    def get_key(self):
+        return self.key
+
+    def get_content(self):
+        return self.content

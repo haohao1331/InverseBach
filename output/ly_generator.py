@@ -16,6 +16,9 @@ class Generator:
     def add(self, score):
         self.content = self.content[0:len(self.content)-1] + score + '}'
 
+    def addMenuet(self, menuet):
+
+
     def write(self):
         self.file.write(self.content)
 
