@@ -5,28 +5,20 @@ import os
 
 
 def main():
-    menuet = Menuet()
-    menuet.generate()
+    m = menuet.Menuet()
+    m.generate()
 
-    c = Converter(menuet)
+    c = convert_to_score.Converter(m)
+    score = c.convert_menuet()
 
+    # print(score)
+
+    g = ly_generator.Generator()
+    g.create("score.ly")
+    g.add(score)
+    g.write_and_close()
+    g.build()
 
 
 if __name__ == '__main__':
     main()
-
-
-
-# test
-
-'''
-g = ly_generator.Generator()
-g.create("score.ly")
-g.add("c' e' g' e'")
-g.write()
-g.close()
-g.build()
-'''
-
-# os.system("lilypond score.ly")
-

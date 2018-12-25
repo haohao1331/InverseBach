@@ -4,7 +4,7 @@ class Note:
         self._chord_note = chord_note
         self._frequency = frequency
         self._length = length
-        self._name = ''
+        self._name = ""
 
     def set_frequency(self, frequency):
         self._frequency = frequency
