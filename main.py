@@ -1,11 +1,10 @@
 
 from framework import *
 from output import *
-import os
 
 
 def main():
-    m = menuet.Menuet()
+    m = menuet.Menuet(key=1, transkey=1)
     m.generate()
 
     c = convert_to_score.Converter(m)

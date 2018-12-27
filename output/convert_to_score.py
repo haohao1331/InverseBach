@@ -44,7 +44,7 @@ class Converter:
             for column in range(4):
                 msr = men[row * 4 + column]
 
-                for n in msr.get_top_notes():
+                for n in msr.get_bot_notes():
                     res += n.name()
                     if length != n.length():
                         length = n.length()
