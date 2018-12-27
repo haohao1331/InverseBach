@@ -63,6 +63,17 @@ class NoteList:
         self.notes.append(note)
         return True
 
+    def insert_note(self,note,position):
+        if position==0:
+            self.notes=[note]+self.notes
+            return True
+        elif position>len(self.notes):
+            return False
+        else:
+            self.notes=self.notes[0:position]+[note]+self.notes[position:len(self.notes)]
+            return True
+
+
     def beat(self):
         return self.beat
 
