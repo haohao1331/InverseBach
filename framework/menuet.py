@@ -93,19 +93,35 @@ class Menuet:
 
     def gen_passing(self):
         notes=[]
-        motives=[]
+        motives = [[1, 1, 1], [1, 1, 0.5, 0.5], [1, 0.5, 0.5, 1], [0.5, 0.5, 1, 1], [1, 0.5, 0.5, 0.5, 0.5],
+                   [0.5, 0.5, 1, 0.5, 0.5], [0.5, 0.5, 0.5, 0.5, 1], [0.5, 0.5, 0.5, 0.5, 0.5, 0.5], [1.5, 0.5, 1],
+                   [1, 1.5, 0.5], [2, 1], [1, 2]]
         for i in range(0,len(self.content),1):
             notes=notes+[[]]
             for g in range(0, len(self.content[i].get_top_notes().get_notes()), 1):
                 notes[i]=notes[i]+[self.content[i].get_top_notes().get_notes()[g].frequency()]
-        print(notes)
-
+        print(notes, len(notes))
         for i in range(0,len(self.content),1):
-            if self.content[i].get_location() == 34:
+            if self.content[i].get_location() == 34:    # adding the cadence at the end of line 3
                 self.content[i].get_top_notes().get_notes()[0].set_length(1)
                 # setting the chord note to length 2
                 previous=self.content[i].get_top_notes().get_notes()[0]
-                # self.content[i].get_top_notes().get_notes()=self.content[i].get_top_notes().get_notes()+[Note(previous.frequency()-1,2,False)]
+                self.content[i].get_top_notes().add_chord_note(Note(previous.frequency()-1,2,False))
+            else:
+                if len(notes[i])==3:
+                    step2=[0,0,0]
+                    if abs(notes[i][1]-notes[i][0])==2:
+                        step2[0] = 1
+                        self.content[i].get_top_notes().get_notes()[0].set_length(0.5)
+                        self.content[i].get_top_notes().insert_note((Note((notes[i][1]-notes[i][0])/2, 0.5, False)), 1)
+                    elif abs(notes[i][2]-notes[i][1])==2:
+                        step2[1] = 1
+                        self.content[i].get_top_notes().get_notes()[1+step2[0]].set_length(0.5)
+                        self.content[i].get_top_notes().insert_note((Note((notes[i][2]-notes[i][1])/2, .5, False)), 1)
+                    elif abs(notes[i][1]-notes[i][0])==2:
+                        step2[2] = 1
+                        self.content[i].get_top_notes().get_notes()[2+step2[0]+step2[1]].set_length(0.5)
+                        self.content[i].get_top_notes().insert_note((Note((notes[i][3]-notes[i][2])/2, 0.5, False)), 1)
 
 
     def gen_harmony(self):
@@ -119,7 +135,7 @@ class Menuet:
         self.chord3()
         self.chord4()
         self.set_chord_note()
-        # self.gen_passing()
+        self.gen_passing()
         self.gen_harmony()
         self.to_printable_format()
         return True
