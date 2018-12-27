@@ -113,15 +113,17 @@ class Menuet:
                     if abs(notes[i][1]-notes[i][0])==2:
                         step2[0] = 1
                         self.content[i].get_top_notes().get_notes()[0].set_length(0.5)
-                        self.content[i].get_top_notes().insert_note((Note((notes[i][1]-notes[i][0])/2, 0.5, False)), 1)
-                    elif abs(notes[i][2]-notes[i][1])==2:
+                        self.content[i].get_top_notes().insert_note((Note((notes[i][1]+notes[i][0])//2, 0.5, False)), 1)
+                    elif abs(notes[i][2+step2[0]]-notes[i][1+step2[0]])==2:
                         step2[1] = 1
                         self.content[i].get_top_notes().get_notes()[1+step2[0]].set_length(0.5)
-                        self.content[i].get_top_notes().insert_note((Note((notes[i][2]-notes[i][1])/2, .5, False)), 1)
-                    elif abs(notes[i][1]-notes[i][0])==2:
+                        self.content[i].get_top_notes().insert_note((Note((notes[i][2+step2[0]]+notes[i][1+step2[0]])//2, .5, False)), 1)
+                    elif abs(notes[i+1][0]-notes[i][2+step2[0]+step2[1]])==2:
                         step2[2] = 1
                         self.content[i].get_top_notes().get_notes()[2+step2[0]+step2[1]].set_length(0.5)
-                        self.content[i].get_top_notes().insert_note((Note((notes[i][3]-notes[i][2])/2, 0.5, False)), 1)
+                        self.content[i].get_top_notes().insert_note((Note((notes[i+1][0]+notes[i][2+step2[0]+step2[1]])//2, 0.5, False)), 1)
+
+        return True
 
 
     def gen_harmony(self):
