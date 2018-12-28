@@ -1,3 +1,2 @@
-import os
-
-os.system("ls -a")
+# a = [1, 2, 3]
+print(44100/261.626)

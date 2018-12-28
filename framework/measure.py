@@ -73,7 +73,6 @@ class NoteList:
             self.notes=self.notes[0:position]+[note]+self.notes[position:len(self.notes)]
             return True
 
-
     def beat(self):
         return self.beat
 
@@ -88,6 +87,9 @@ class NoteList:
         for i in range(0,len(self.notes),1):
             notes = notes + [self.notes[i].frequency()]
         return notes
+
+    def __len__(self):
+        return len(self.notes)
 
     def __next__(self):
         if self.index >= len(self.notes):

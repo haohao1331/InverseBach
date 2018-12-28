@@ -1,33 +1,45 @@
-import numpy
-from scipy.io.wavfile import write
+
 import wave
 from math import sin, pi
 
 
-def wavWrite(y, fs, nbits, audioFile):
-    """ Write samples to WAV file
-    Args:
-        samples: (ndarray / 2D ndarray) (floating point) sample vector
-                    mono: DIM: nSamples
-                    stereo: DIM: nSamples x nChannels
+class AudioOut:
 
-        fs: 	(int) Sample rate in Hz
-        nBits: 	(int) Number of bits
-        fnWAV: 	(string) WAV file name to write
-    """
-    if nbits == 8:
-        intsamples = (y+1.0) * AudioIO.normFact['int' + str(nbits)]
-        fX = np.int8(intsamples)
-    elif nbits == 16:
-        intsamples = y * AudioIO.normFact['int' + str(nbits)]
-        fX = np.int16(intsamples)
-    elif nbits > 16:
-        fX = y
+    def __init__(self, sampwidth, framerate=44100, nchannels=1, path=""):
+        self.path = path
+        self.file = None
+        self.bin_str = b''
+        if path != "":
+            self._setup(path, sampwidth, framerate, nchannels)
 
-    write(audioFile, fs, fX)
+    def _setup(self, path, sampwidth, framerate, nchannels):
+        self.file = wave.open(path, 'w')
+        self.file.setnchannels(nchannels)
+        self.file.setframerate(framerate)
+        self.file.setsampwidth(sampwidth)
+        self.file.setcomptype('NONE', 'Not Compressed')
+
+    def add_sample(self, sample, clear=False):
+        if clear:
+            self.bin_str = b''
+
+        for s in sample:
+            self.bin_str += wave.struct.pack('h', round(s*20000))
+
+    def write(self):
+        self.file.writeframesraw(self.bin_str)
+
+    def close(self):
+        self.file.close()
+
+    def write_and_close(self):
+        self.write()
+        self.close()
 
 
-N = 168
+frequency = 261.626
+framerate = 44100
+N = framerate / frequency
 x = range(N)
 y = N * [0]
 
@@ -39,13 +51,6 @@ for i in x:
 y = 1313 * y
 x = range(3*N)
 
-fout = wave.open("test.wav", 'w')
-fout.setnchannels(1)
-fout.setsampwidth(2)
-fout.setframerate(44100)
-fout.setcomptype('NONE', 'Not Compressed')
-BinStr = b''
-for i in range(len(y)):
-    BinStr += wave.struct.pack('h', round(y[i]*20000))
-fout.writeframesraw(BinStr)
-fout.close()
+out = AudioOut("test.wav", sampwidth=2)
+out.add_sample(y)
+out.write_and_close()

@@ -7,6 +7,8 @@ class Generator:
         self.path = path
         self.file = None
         self.content = ""
+        if path != "":
+            self.create(path)
 
     def create(self, path):
         self.path = path
