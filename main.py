@@ -4,7 +4,7 @@ from output import *
 
 
 def main():
-    m = menuet.Menuet()
+    m = menuet.Menuet(transkey=-1)
     m.generate()
 
     c = convert_to_score.Converter(m)

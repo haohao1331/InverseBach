@@ -11,15 +11,23 @@ class Measure:
         self.top_notes = NoteList(self.beat)
         self.bot_notes = NoteList(self.beat)
         self.trans_measure=trans_measure        # True or False
+        self.motive=-1
 
     def add_chord_note(self):
         if self.location%10==4:
-            note=Note(self.chord_progression+0,3,True)     # need to improve
+            note=Note(self.chord_progression,3,True)     # need to improve
             self.top_notes.add_chord_note(note)
         else:
-            note1 = Note(self.chord_progression + random.choice([0, 2, 4]), 1, True)
-            note2 = Note(self.chord_progression + random.choice([0, 2, 4]), 1, True)
-            note3 = Note(self.chord_progression + random.choice([0, 2, 4]), 1, True)
+            while(True):
+                f1=random.choice([0, 2, 4])
+                f2=random.choice([0, 2, 4])
+                f3=random.choice([0, 2, 4])
+                if not(f1==f2==f3):
+                    break
+
+            note1 = Note(self.chord_progression + f1, 1, True)
+            note2 = Note(self.chord_progression + f2, 1, True)
+            note3 = Note(self.chord_progression + f3, 1, True)
             self.top_notes.add_chord_note(note1)
             self.top_notes.add_chord_note(note2)
             self.top_notes.add_chord_note(note3)
@@ -49,6 +57,12 @@ class Measure:
     def is_trans_measure(self):
         return self.trans_measure
 
+    def get_motive(self):
+        return self.motive
+
+    def set_motive(self,motive):
+        self.motive=motive
+        return True
 
 class NoteList:
 

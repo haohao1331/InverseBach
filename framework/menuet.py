@@ -89,34 +89,65 @@ class Menuet:
     def set_chord_note(self):
         for i in range(0, len(self.content), 1):
             (self.content[i]).add_chord_note()
+
+        for i in range(0,len(self.content),1):
+            for g in range(0,len(self.content[i].get_top_notes().get_notes()),1):
+                if self.content[i].get_top_notes().get_notes()[g].frequency()>=8:
+                    freq=self.content[i].get_top_notes().get_notes()[g].frequency() - 7
+                    self.content[i].get_top_notes().get_notes()[g].set_frequency(freq)
         return True
 
     def gen_passing(self):
         notes=[]
-        motives = [[1, 1, 1], [1, 1, 0.5, 0.5], [1, 0.5, 0.5, 1], [0.5, 0.5, 1, 1], [1, 0.5, 0.5, 0.5, 0.5],
-                   [0.5, 0.5, 1, 0.5, 0.5], [0.5, 0.5, 0.5, 0.5, 1], [0.5, 0.5, 0.5, 0.5, 0.5, 0.5], [1.5, 0.5, 1],
+        motives = [[], [2], [1], [0], [1,2],[0,2], [0,1], [0,1,2], [1.5, 0.5, 1],
                    [1, 1.5, 0.5], [2, 1], [1, 2]]
         for i in range(0,len(self.content),1):
             notes=notes+[[]]
             for g in range(0, len(self.content[i].get_top_notes().get_notes()), 1):
                 notes[i]=notes[i]+[self.content[i].get_top_notes().get_notes()[g].frequency()]
-        print(notes, len(notes))
+        # print(notes, len(notes))
+        self.content[0].set_motive(random.randint(0, 9))
+        self.content[1].set_motive(random.randint(0, 9))
+        self.content[2].set_motive(random.randint(0, 9))
+        self.content[3].set_motive(12)
+        self.content[4].set_motive(self.content[0].get_motive)
+        self.content[5].set_motive(self.content[1].get_motive)
+        self.content[6].set_motive(self.content[2].get_motive)
+        self.content[7].set_motive(12)
+        self.content[8].set_motive(random.randint(0, 9))
+        self.content[9].set_motive(random.randint(0, 9))
+        self.content[10].set_motive(random.randint(0, 9))
+        self.content[11].set_motive(11)
+        self.content[12].set_motive(self.content[0].get_motive)
+        self.content[13].set_motive(self.content[1].get_motive)
+        self.content[14].set_motive(self.content[2].get_motive)
+        self.content[15].set_motive(12)
         for i in range(0,len(self.content),1):
-            if self.content[i].get_location() == 34:    # adding the cadence at the end of line 3
+            if self.content[i].get_motive() == 11:    # adding the cadence at the end of line 3
                 self.content[i].get_top_notes().get_notes()[0].set_length(1)
                 # setting the chord note to length 2
                 previous=self.content[i].get_top_notes().get_notes()[0]
                 self.content[i].get_top_notes().add_chord_note(Note(previous.frequency()-1,2,False))
+            elif self.content[i].get_motive() == 12:  # doing noting
+                pass
+            elif self.content[i].get_motive() == 8:
+                pass
+            elif self.content[i].get_motive() == 9:
+                pass
+            elif self.content[i].get_motive() == 10:
+                pass
+            elif self.content[i].get_motive() == 0:
+                pass
             else:                                       # adding simple passing notes
-                print(len(notes[i]))
-                if len(notes[i])==3:
-                    step2=[0,0,0]
-                    print(step2)
+                # print(len(notes[i]))
+                step2 = [0, 0, 0]
+                for g in motives[self.content[i].get_motive()]:
+                    # print(step2)
                     if abs(notes[i][1]-notes[i][0])==2:
                         step2[0] = 1
                         self.content[i].get_top_notes().get_notes()[0].set_length(0.5)
                         self.content[i].get_top_notes().insert_note((Note((notes[i][1]+notes[i][0])//2, 0.5, False)), 1)
-                        print(step2)
+                        # print(step2)
                     if abs(notes[i][2]-notes[i][1])==2:
                         step2[1] = 1
                         self.content[i].get_top_notes().get_notes()[1+step2[0]].set_length(0.5)
