@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3ed19ad4-9627-43fb-bd6e-fc42e70e3b10" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/framework/measure.py" beforeDir="false" afterPath="$PROJECT_DIR$/framework/measure.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/menuet.py" beforeDir="false" afterPath="$PROJECT_DIR$/framework/menuet.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/framework/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/score.ly" beforeDir="false" afterPath="$PROJECT_DIR$/score.ly" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/score.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/score.pdf" afterDir="false" />
     </list>
@@ -15,8 +16,8 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/InverseBach$audiotest.coverage" NAME="audiotest Coverage Results" MODIFIED="1545773549385" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/output" />
-    <SUITE FILE_PATH="coverage/InverseBach$main.coverage" NAME="main Coverage Results" MODIFIED="1546014786300" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/InverseBach$test.coverage" NAME="test Coverage Results" MODIFIED="1546014502919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/framework" />
+    <SUITE FILE_PATH="coverage/InverseBach$main.coverage" NAME="main Coverage Results" MODIFIED="1546017856621" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/InverseBach$test.coverage" NAME="test Coverage Results" MODIFIED="1546018947136" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/framework" />
   </component>
   <component name="FileEditorManager">
     <splitter split-orientation="horizontal" split-proportion="0.37287378">
@@ -25,8 +26,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="638">
-                  <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+                <state relative-caret-position="145">
+                  <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
                 </state>
               </provider>
             </entry>
@@ -34,7 +35,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/framework/measure.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1653">
+                <state relative-caret-position="285">
+                  <caret line="94" column="19" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="19" />
                   <folding>
                     <element signature="e#0#28#0" expanded="true" />
                   </folding>
@@ -49,8 +51,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/framework/menuet.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1160">
-                  <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
+                <state relative-caret-position="764">
+                  <caret line="230" column="43" selection-start-line="230" selection-start-column="43" selection-end-line="230" selection-end-column="43" />
                   <folding>
                     <element signature="e#0#31#0" expanded="true" />
                     <element signature="e#114#1128#0" />
@@ -60,9 +62,6 @@
                     <element signature="e#3534#3885#0" />
                     <element signature="e#3925#4032#0" />
                     <element signature="e#6372#6472#0" />
-                    <element signature="e#6769#10253#0" />
-                    <element signature="e#10221#10582#0" />
-                    <element signature="e#10617#10918#0" />
                     <element signature="e#12860#12988#0" />
                     <element signature="e#11191#11206#0" />
                     <element signature="e#11244#11264#0" />
@@ -74,8 +73,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/framework/test.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="290">
-                  <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+                <state relative-caret-position="203">
+                  <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
                   <folding>
                     <element signature="e#0#21#0" expanded="true" />
                   </folding>
@@ -98,16 +97,18 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/framework/test.py" />
+        <option value="$PROJECT_DIR$/framework/measure.py" />
         <option value="$PROJECT_DIR$/framework/menuet.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="134" />
-    <option name="y" value="35" />
-    <option name="width" value="1400" />
-    <option name="height" value="1000" />
+    <option name="x" value="269" />
+    <option name="y" value="87" />
+    <option name="width" value="1390" />
+    <option name="height" value="1046" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -150,7 +151,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python.test">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="InverseBach" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -215,18 +216,18 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1545948008717</updated>
-      <workItem from="1545948012426" duration="7795000" />
+      <workItem from="1545948012426" duration="11026000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7795000" />
+    <option name="totallyTimeSpent" value="11026000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="134" y="35" width="3066" height="1765" extended-state="6" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24983211" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24983211" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
@@ -236,7 +237,7 @@
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.09272849" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27151436" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -260,14 +261,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="638">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        <state relative-caret-position="145">
+          <caret line="6" column="22" lean-forward="true" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/framework/measure.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1653">
+        <state relative-caret-position="285">
+          <caret line="94" column="19" selection-start-line="94" selection-start-column="19" selection-end-line="94" selection-end-column="19" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -276,8 +278,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/framework/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="203">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
@@ -286,8 +288,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/framework/menuet.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1160">
-          <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
+        <state relative-caret-position="764">
+          <caret line="230" column="43" selection-start-line="230" selection-start-column="43" selection-end-line="230" selection-end-column="43" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
             <element signature="e#114#1128#0" />
@@ -297,9 +299,6 @@
             <element signature="e#3534#3885#0" />
             <element signature="e#3925#4032#0" />
             <element signature="e#6372#6472#0" />
-            <element signature="e#6769#10253#0" />
-            <element signature="e#10221#10582#0" />
-            <element signature="e#10617#10918#0" />
             <element signature="e#12860#12988#0" />
             <element signature="e#11191#11206#0" />
             <element signature="e#11244#11264#0" />
