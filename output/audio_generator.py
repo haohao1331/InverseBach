@@ -35,22 +35,3 @@ class AudioOut:
     def write_and_close(self):
         self.write()
         self.close()
-
-
-frequency = 261.626
-framerate = 44100
-N = framerate / frequency
-x = range(N)
-y = N * [0]
-
-for i in x:
-    y1 = 4 / pi * sin(2 * pi * i / N)
-    y2 = 4 / (3 * pi) * sin(6 * pi * i / N)
-    y3 = 4 / (5 * pi) * sin(10 * pi * i / N)
-    y[i] = y1 + y2 + y3
-y = 1313 * y
-x = range(3*N)
-
-out = AudioOut("test.wav", sampwidth=2)
-out.add_sample(y)
-out.write_and_close()

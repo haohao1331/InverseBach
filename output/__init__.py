@@ -1,1 +1,1 @@
-__all__ = ["converter", "ly_generator"]
+__all__ = ["converter", "ly_generator", "audio_generator"]

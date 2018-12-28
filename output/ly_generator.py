@@ -1,7 +1,7 @@
 from subprocess import call
 
 
-class Generator:
+class LyOut:
 
     def __init__(self, path=""):
         self.path = path

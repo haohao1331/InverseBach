@@ -8,11 +8,16 @@ def main():
     m.generate()
 
     c = converter.Converter(m)
-    c.convert_to_wav()
+    sample = c.convert_to_wav()
     # score = c.convert_to_score()
 
+    a = audio_generator.AudioOut(2, path="test.wav")
+    a.add_sample(sample)
+    a.write_and_close()
+
     '''
-    g = ly_generator.Generator()
+    score output test
+    g = ly_generator.LyOut()
     g.create("score.ly")
     g.add(score)
     g.write_and_close()
