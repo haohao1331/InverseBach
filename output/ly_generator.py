@@ -28,8 +28,8 @@ class LyOut:
         self.write()
         self.close()
 
-    def build(self):
-        call(["lilypond", self.path])
+    def build(self, dir):
+        call(["lilypond", "--output="+dir, self.path])
 
 
 

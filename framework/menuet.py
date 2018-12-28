@@ -204,37 +204,59 @@ class Menuet:
         for i in range(0,len(self.content),1):          # converting into real frequency
             for g in range(0,len(self.content[i].get_top_notes().get_notes()),1):
                 if self.content[i].get_top_notes()[g].name()[0]!=',':       # top notes with c'
-                    frequency = A[self.content[i].get_top_notes()[g].name()[0]]*2**(len(self.content[i].get_top_notes()[g].name())-1)
+                    accum=0
+                    for h in range(len(self.content[i].get_top_notes()[g].name())-1,-1,-1):
+                        if self.content[i].get_top_notes()[g].name()[h]!='\'':
+                            break
+                        accum=accum+1
+                    frequency = A[self.content[i].get_top_notes()[g].name()[0:len(self.content[i].get_top_notes()[g].name())-accum]]*2**accum
                     self.content[i].get_top_notes()[g].set_frequency(frequency)
                 elif self.content[i].get_top_notes()[g].name()[0]==',':     # top notes with ,c
-                    frequency = A[self.content[i].get_top_notes()[g].name()[len(self.content[i].get_top_notes()[g].name()) - 1]] /(2 ** (len(self.content[i].get_top_notes()[g].name()) - 1))
+                    accum = 0
+                    for h in range(0, len(self.content[i].get_top_notes()[g].name()), 1):
+                        if self.content[i].get_top_notes()[g].name()[h] != ',':
+                            break
+                        accum = accum + 1
+                    frequency = A[self.content[i].get_top_notes()[g].name()[0:accum]] /(2 ** (len(self.content[i].get_top_notes()[g].name()) - accum))
                     self.content[i].get_top_notes()[g].set_frequency(frequency)
             for g in range(0, len(self.content[i].get_bot_notes().get_notes()), 1):
                 if self.content[i].get_bot_notes()[g].name()[0]!=',':       # bot notes with c'
-                    frequency = A[self.content[i].get_bot_notes()[g].name()[0]]*2**(len(self.content[i].get_bot_notes()[g].name())-1)
+                    accum = 0
+                    for h in range(len(self.content[i].get_bot_notes()[g].name()) - 1, -1, -1):
+                        if self.content[i].get_bot_notes()[g].name()[h] != '\'':
+                            break
+                        accum = accum + 1
+                    frequency = A[self.content[i].get_bot_notes()[g].name()[
+                                  0:len(self.content[i].get_bot_notes()[g].name()) - accum]] * 2 ** accum
                     self.content[i].get_bot_notes()[g].set_frequency(frequency)
                 elif self.content[i].get_bot_notes()[g].name()[0]==',':     # bot notes with ,c
-                    frequency = A[self.content[i].get_bot_notes()[g].name()[len(self.content[i].get_bot_notes()[g].name()) - 1]] /(2 ** (len(self.content[i].get_bot_notes()[g].name()) - 1))
+                    accum = 0
+                    for h in range(0, len(self.content[i].get_bot_notes()[g].name()), 1):
+                        if self.content[i].get_bot_notes()[g].name()[h] != ',':
+                            break
+                        accum = accum + 1
+                    frequency = A[self.content[i].get_bot_notes()[g].name()[0:accum]] / (
+                                2 ** (len(self.content[i].get_bot_notes()[g].name()) - accum))
                     self.content[i].get_bot_notes()[g].set_frequency(frequency)
 
         return True
 
     def get(self):
-        # print("key is" ,self.key)
-        # print("transkey is",self.transkey)
+        print("key is" ,self.key)
+        print("transkey is",self.transkey)
         measure_chord_progressions=[]
         for i in range(0,len(self.content), 1):
             measure_chord_progressions=measure_chord_progressions+[(self.content[i]).get_chord_progression()]
-        # print("the chord progression is ", measure_chord_progressions)
+        print("the chord progression is ", measure_chord_progressions)
         return True
 
     def get_notes(self):
         print("Top notes are: ")
         for i in range(0,len(self.content),1):
-            print(self.content[i].get_top_notes().print_notes())
+            self.content[i].get_top_notes().print_notes()
         print("Bot notes are: ")
         for i in range(0,len(self.content),1):
-            print(self.content[i].get_bot_notes().print_notes())
+            self.content[i].get_bot_notes().print_notes()
         return True
 
     def get_content(self):

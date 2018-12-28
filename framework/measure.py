@@ -86,7 +86,12 @@ class NoteList:
         notes=[]
         for i in range(0,len(self.notes),1):
             notes = notes + [self.notes[i].frequency()]
-        return notes
+        print(notes)
+        notes = []
+        for i in range(0, len(self.notes), 1):
+            notes = notes + [self.notes[i].name()]
+        print(notes)
+        return True
 
     def __len__(self):
         return len(self.notes)

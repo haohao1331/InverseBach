@@ -1,0 +1,3 @@
+\version "2.18.2"{\new PianoStaff 
+<< \new Staff { \time 3/4 \clef "treble" \key des \major des'4 aes' aes' bes' f' bes' f'8 ges' aes'4 aes' aes'2. \break f'8 ees' des'4 aes' des' des'8 c' bes'4 g' g' g' aes'2. \break ees'4 ees'8 des' c'4 bes'8 c' des' ees' f'4 des' aes' aes' des' c'2 \break aes'4 aes'8 ges' f'4 des' des' des' aes'8 bes' c'4 c' des'2. }
+\new Staff { \clef "bass" \key des \major des2. bes des aes \break des bes ees aes \break aes bes des des \break des bes aes des } >>}

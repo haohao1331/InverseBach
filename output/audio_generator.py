@@ -1,5 +1,6 @@
 
 import wave
+import struct
 from math import sin, pi
 
 
@@ -24,7 +25,9 @@ class AudioOut:
             self.bin_str = b''
 
         for s in sample:
-            self.bin_str += wave.struct.pack('h', round(s*20000))
+            s = round(s*10000)
+            if -0x7fff-1 <= s <= 0x7fff:
+                self.bin_str += struct.pack('h', s)
 
     def write(self):
         self.file.writeframesraw(self.bin_str)
