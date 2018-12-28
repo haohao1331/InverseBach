@@ -1,6 +1,7 @@
 from framework.measure import *
 import random
 
+
 class Menuet:
 
     def __init__(self, key=-1, transkey=0):
@@ -27,7 +28,6 @@ class Menuet:
                 self.transkey = keys[key + transkey_index]
         self.transkey_index = transkey_index
         self.content = []
-
 
     def chord1(self):
         choices = [2, 4, 5, 6]
@@ -107,24 +107,26 @@ class Menuet:
                 # setting the chord note to length 2
                 previous=self.content[i].get_top_notes().get_notes()[0]
                 self.content[i].get_top_notes().add_chord_note(Note(previous.frequency()-1,2,False))
-            else:
+            else:                                       # adding simple passing notes
+                print(len(notes[i]))
                 if len(notes[i])==3:
                     step2=[0,0,0]
+                    print(step2)
                     if abs(notes[i][1]-notes[i][0])==2:
                         step2[0] = 1
                         self.content[i].get_top_notes().get_notes()[0].set_length(0.5)
                         self.content[i].get_top_notes().insert_note((Note((notes[i][1]+notes[i][0])//2, 0.5, False)), 1)
-                    elif abs(notes[i][2+step2[0]]-notes[i][1+step2[0]])==2:
+                        print(step2)
+                    if abs(notes[i][2]-notes[i][1])==2:
                         step2[1] = 1
                         self.content[i].get_top_notes().get_notes()[1+step2[0]].set_length(0.5)
-                        self.content[i].get_top_notes().insert_note((Note((notes[i][2+step2[0]]+notes[i][1+step2[0]])//2, .5, False)), 1)
-                    elif abs(notes[i+1][0]-notes[i][2+step2[0]+step2[1]])==2:
+                        self.content[i].get_top_notes().insert_note((Note((notes[i][2]+notes[i][1])//2, 0.5, False)), 2+step2[0])
+                    if abs(notes[i+1][0]-notes[i][2])==2:
                         step2[2] = 1
                         self.content[i].get_top_notes().get_notes()[2+step2[0]+step2[1]].set_length(0.5)
-                        self.content[i].get_top_notes().insert_note((Note((notes[i+1][0]+notes[i][2+step2[0]+step2[1]])//2, 0.5, False)), 1)
+                        self.content[i].get_top_notes().insert_note((Note((notes[i+1][0]+notes[i][2])//2, 0.5, False)), 3+step2[0]+step2[1])
 
         return True
-
 
     def gen_harmony(self):
         for i in range(0,len(self.content),1):
@@ -196,6 +198,26 @@ class Menuet:
                     self.content[i].get_bot_notes().get_notes()[g].set_name(name)
                     print("bot ", self.content[i].get_bot_notes().get_notes()[g].frequency(), name)
 
+        A={'c':130.8127827,'des':138.5913155,'d':146.832384,'ees':155.5634919,'e':164.8137785,'f':174.6141157,
+           'ges':184.9972114,'g':195.997718,'aes':207.6523488,'a':220,'bes':233.0818808,'b':246.9416506}
+
+        for i in range(0,len(self.content),1):          # converting into real frequency
+            for g in range(0,len(self.content[i].get_top_notes().get_notes()),1):
+                if self.content[i].get_top_notes()[g].name()[0]!=',':       # top notes with c'
+                    frequency = A[self.content[i].get_top_notes()[g].name()[0]]*2**(len(self.content[i].get_top_notes()[g].name())-1)
+                    self.content[i].get_top_notes()[g].set_frequency(frequency)
+                elif self.content[i].get_top_notes()[g].name()[0]==',':     # top notes with ,c
+                    frequency = A[self.content[i].get_top_notes()[g].name()[len(self.content[i].get_top_notes()[g].name()) - 1]] /(2 ** (len(self.content[i].get_top_notes()[g].name()) - 1))
+                    self.content[i].get_top_notes()[g].set_frequency(frequency)
+            for g in range(0, len(self.content[i].get_bot_notes().get_notes()), 1):
+                if self.content[i].get_bot_notes()[g].name()[0]!=',':       # bot notes with c'
+                    frequency = A[self.content[i].get_bot_notes()[g].name()[0]]*2**(len(self.content[i].get_bot_notes()[g].name())-1)
+                    self.content[i].get_bot_notes()[g].set_frequency(frequency)
+                elif self.content[i].get_bot_notes()[g].name()[0]==',':     # bot notes with ,c
+                    frequency = A[self.content[i].get_bot_notes()[g].name()[len(self.content[i].get_bot_notes()[g].name()) - 1]] /(2 ** (len(self.content[i].get_bot_notes()[g].name()) - 1))
+                    self.content[i].get_bot_notes()[g].set_frequency(frequency)
+
+        return True
 
     def get(self):
         # print("key is" ,self.key)
@@ -218,12 +240,10 @@ class Menuet:
     def get_content(self):
         return self.content
 
-    '''
     def get_notes_name(self):
         for i in range(0,len(self.content),1):
             print(self.content[i].get_top_notes().print_notes_name())
         return True
-    '''
 
     def get_key(self):
         return self.key
