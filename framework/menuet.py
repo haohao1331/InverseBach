@@ -4,12 +4,12 @@ import random
 
 class Menuet:
 
-    def __init__(self, key=-1, transkey=0):
+    def __init__(self, key=0, transkey=0):
         keys = ['f', 'c', 'g', 'd', 'a', 'e', 'b', 'ges', 'des', 'aes', 'ees', 'bes', 'f','c']
         index = random.randint(1, 12)
         self.key = key
         self.transkey = transkey
-        if self.key==-1:
+        if self.key==0:
             self.key=keys[index]
             if self.transkey == 0:
                 transkey_index=random.choice([1, -1])

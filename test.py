@@ -3,7 +3,7 @@ from framework import *
 from output import *
 
 
-def main():
+def test():
     m = menuet.Menuet()
     m.generate()
 
@@ -26,5 +26,4 @@ def main():
     g.build("sample_score")
 
 
-if __name__ == '__main__':
-    main()
+test()
