@@ -3,7 +3,7 @@ from GUI import *
 
 
 def main():
-    root = gui.GUIMain()
+    gui.GUIMain()
     mainloop()
 
 
