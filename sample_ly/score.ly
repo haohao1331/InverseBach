@@ -1,3 +1,7 @@
+date = #(strftime "%d-%m-%Y" (localtime (current-time)))
+\header{
+title = "Menuet in B Major"
+composer = "I. S. baCh"}
 \version "2.18.2"{\new PianoStaff 
-<< \new Staff { \time 3/4 \clef "treble" \key f \major c'4 c' c' g' d'8 c' bes'4 f'8 g' a' bes' c'4 c'2. \break c'8 bes' a' g' f'4 bes'8 c' d' c' bes'4 c' c' c' bes'2. \break bes'4 bes' f' ees' ees'8 d' c'4 c'8 bes' a'4 a'8 g' f'4 e'2 \break c'8 bes' a' g' f'4 d'8 c' bes' c' d'4 e'8 f' g'4 g' f'2. }
-\new Staff { \clef "bass" \key f \major f2. g f c \break f g f bes \break bes c f f \break f g c f } >>}
+<< \new Staff { \time 3/4 \clef "treble" \key b \major ges'4 ges'8 e' ees'4 aes' aes'8 ges' e'4 ges' ges'8 e' ees' e' ges'2. \break ees'8 e' ges' e' ees'4 e' b' e' ees' ees'8 des' b'4 e'2. \break e'8 ges' aes' a' b'4 ges' ges' des' ges'8 e' ees' des' b'4 b' bes'2 \break ges'4 ges' b' e'8 ges' aes'4 des' bes'8 b' des'4 des' b'2. }
+\new Staff { \clef "bass" \key b \major b2. des b ges \break b e b e \break e ges b b \break b des ges b } >>}\markup{\date}
