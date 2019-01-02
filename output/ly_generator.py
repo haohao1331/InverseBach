@@ -1,12 +1,14 @@
 from subprocess import call
 
 
-class Generator:
+class LyOut:
 
     def __init__(self, path=""):
         self.path = path
         self.file = None
         self.content = ""
+        if path != "":
+            self.create(path)
 
     def create(self, path):
         self.path = path
@@ -26,8 +28,8 @@ class Generator:
         self.write()
         self.close()
 
-    def build(self):
-        call(["lilypond", self.path])
+    def build(self, dir):
+        call(["lilypond", "--output="+dir, self.path])
 
 
 
