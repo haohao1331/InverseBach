@@ -24,7 +24,7 @@ class Converter:
 
         men = self.raw.get_content()
 
-        res += "\\time 3/4 \\clef \"treble\" \\key " + self.raw.get_key() + " \\major \\tempo \"Moderato\""
+        res += "\\time 3/4 \\clef \"treble\" \\key " + self.raw.get_key() + " \\major \\tempo \"Moderato\" \\repeat volta 2{"
 
         length = 0
         for row in range(4):
@@ -38,9 +38,12 @@ class Converter:
                         length = n.length()
                         res += length_map[length]
                     res += ' '
-
+            if row == 1 or row == 3:
+                res += "} "
             if row != 3:
                 res += '\\break '
+            if row == 1:
+                res += "\\repeat volta 2{"
 
         res += '}\n'
 

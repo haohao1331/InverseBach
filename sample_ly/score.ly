@@ -1,7 +1,7 @@
 date = #(strftime "%d-%m-%Y" (localtime (current-time)))
 \header{
-title = "Menuet in F Major"
+title = "Menuet in D Major"
 composer = "I. S. baCh"}
 \version "2.18.2"{\new PianoStaff 
-<< \new Staff {\time 3/4 \clef "treble" \key f \major \tempo "Moderato" f'4. a'8 f'4 bes' d'' bes'8 d'' c''4 a'8 g' f'4 g'2. \break f'4. c'8 f'4 d' g' bes'8 g' a'4 c''8 bes' a'4 bes'2. \break bes'4 d'' f''8 d'' ees''4 c''8 g' g'4 f'8 g' a' g' f'4 e' d'2 \break f'4. a'8 c''4 d'' bes' f'8 d' e'4 g'8 f' e'4 f'2. }
-\new Staff { \clef "bass" \key f \major f2. bes f c \break f g f bes \break bes c f f \break f bes c f } >>}\markup{\date}
+<< \new Staff { \time 3/4 \clef "treble" \key d \major \tempo "Moderato" \repeat volta 2{d''4 ges'' d''8 ges'' e''4 g'' e''8 b' d'' a' a'4 ges' e'2. \break d''4 a' ges'8 g' a'4 e' a'8 des'' b' e'' e''4 aes'' a''2. } \break \repeat volta 2{a'8 b' des'' b' a'4 b'8 ges' ges'4 b' a' ges' d' des' b2 \break d''4 ges'' d''8 des'' b'4 g' e'8 a' a' b' des''4 e'' d''2. } }
+\new Staff { \clef "bass" \key d \major d2. e d a \break d a e a \break a b d d \break d e a d } >>}\markup{\date}
