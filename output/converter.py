@@ -10,8 +10,15 @@ class Converter:
     def convert_to_score(self):
 
         length_map = {1: '4', 2: '2', 3: '2.', 0.5: '8', 1.5: '4.'}
+        key = self.raw.get_key().upper()
+        if len(key) > 1:
+            key = key[0] + '\u266d'
 
         res = ""
+        res += "date = #(strftime \"%d-%m-%Y\" (localtime (current-time)))\n\\header{\n" \
+               "title = \"Menuet in " + key + " Major\"\n" \
+               "composer = \"I. S. baCh\"}\n"
+        res += "\\version \"2.18.2\"{"
         res += "\\new PianoStaff \n<< "
         res += "\\new Staff { "
 
@@ -55,7 +62,9 @@ class Converter:
             if row != 3:
                 res += '\\break '
 
-        res += '} >>'
+        res += '} >>}'
+
+        res += "\\markup{\\date}"
 
         return res
 

@@ -70,6 +70,7 @@ class StartPage(Frame):
     def gen_audio_init(self, audio_var):
         if audio_var == 1:
             self.audio_sframe.disable()
+            self.tmp_audio_file = ''
             self.audio_file_entry.config(state='disabled')
 
     def next_item(self):

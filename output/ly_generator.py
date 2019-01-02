@@ -13,10 +13,9 @@ class LyOut:
     def create(self, path):
         self.path = path
         self.file = open(path, 'w')
-        self.content += "\\version \"2.18.2\"{}"  # TODO generalize version
 
     def add(self, score):
-        self.content = self.content[0:len(self.content)-1] + score + '}'
+        self.content += score
 
     def write(self):
         self.file.write(self.content)
