@@ -26,4 +26,4 @@ the distance between the two chord notes.
 Lastly is the harmony. Usually 3rds and 6ths forms good harmony. That is, when the  
 harmony forms a 3rd or 6th interval with the melody notes, it sounds strong.  
 Based on this principle, the harmony chord notes are first selected then decorated 
-to for the base line of the menuet. 
+to for the base line of the menuet.
