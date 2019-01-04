@@ -9,7 +9,7 @@ class Converter:
 
     def convert_to_score(self):
 
-        length_map = {1: '4', 2: '2', 3: '2.', 0.5: '8', 1.5: '4.'}
+        length_map = {1: '4', 2: '2', 3: '2.', 0.5: '8', 1.5: '4.', 0.25: '16', 0.75: '8.'}
         key = self.raw.get_key().upper()
         if len(key) > 1:
             key = key[0] + '\u266d'
@@ -24,7 +24,7 @@ class Converter:
 
         men = self.raw.get_content()
 
-        res += "\\time 3/4 \\clef \"treble\" \\key " + self.raw.get_key() + " \\major "
+        res += "\\time 3/4 \\clef \"treble\" \\key " + self.raw.get_key() + " \\major \\tempo \"Moderato\""
 
         length = 0
         for row in range(4):
