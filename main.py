@@ -1,9 +1,14 @@
+'''
+Created by Jianyuan Su
+Date: Jan 4, 2019
+'''
+
 from tkinter import *
 from GUI import *
 
 
 def main():
-    gui.GUIMain()
+    gui.GUIMain()  # start GUI
     mainloop()
 
 

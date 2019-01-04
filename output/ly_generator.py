@@ -1,13 +1,18 @@
+'''
+Created by Jianyuan Su
+Date: Jan 4, 2019
+'''
+
 from subprocess import call
 
 
 class LyOut:
 
     def __init__(self, path=""):
-        self.path = path
-        self.file = None
-        self.content = ""
-        if path != "":
+        self.path = path  # path to file
+        self.file = None  # file object
+        self.content = ""  # file content
+        if path != "":  # if path exists, create file object
             self.create(path)
 
     def create(self, path):
@@ -28,7 +33,7 @@ class LyOut:
         self.close()
 
     def build(self, dir):
-        call(["lilypond", "--output="+dir, self.path])
+        call(["lilypond", "--output="+dir, self.path])  # call shell command
 
 
 

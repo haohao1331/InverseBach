@@ -1,6 +1,15 @@
 # InverseBach
+![InverseBach](GUI/inversebach.jpg)
+## version
+1.0.0
 ## Introduction
-
+A program that generates user specified random music.
+## Dependency
+* python3, command: `sudo apt-get install python3`
+* GNU Lilypond, command: `sudo apt-get install lilypond`
+* python3-tk, command: `sudo apt-get install python3-tk`
+## Run
+Simply run `main.py` and follow instructions
 ## Main Algorithm
 The Baroque menuet has 16 measure, 4 cadences, 1 transpose key 
 and 2 repeats.Our main idea is to generate the chord progressions of 
