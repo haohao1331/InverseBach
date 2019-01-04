@@ -1,6 +1,26 @@
 # InverseBach
 ## Introduction
 
+## Limitations and Simplifications
+Generating music using an algorithm is tedeous and difficult. Thus, 
+some simplifications were made so that this project is possible.
+
+1. This program can only generate Baroque menuets.
+2. All the sharps are represented by flats. ex, F# is represented as Gb
+3. The menuets that are generated are all in major keys
+4. The transposition key is only one sharp or one flat away from the 
+original key
+5. The cadences are authentic and half only. With authentic cadence as 5-1 
+and half cadence as 1-5. 
+6. All the chords that are generated are basic chords. No dominant 7th 
+or diminished 7th exist. However, chords may be in different inversions. 
+7. All notes are either quarter, half, eighth, dotted quarte, dotted half. 
+There are no triplets or sixteenth notes available. 
+8. The range for melody is from a3 to a5 on the grand piano. 
+The range for harmony is from a1 to a3 on the grand piano.
+9. Only one chord per measure.
+10. The form of the menuet is restricted to rounded binary. 
+
 ## Main Algorithm
 The Baroque menuet has 16 measure, 4 cadences, 1 transpose key 
 and 2 repeats.Our main idea is to generate the chord progressions of 
