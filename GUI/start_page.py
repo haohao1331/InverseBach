@@ -1,3 +1,8 @@
+'''
+Created by Jianyuan Su
+Date: Jan 4, 2019
+'''
+
 from tkinter import *
 from tkinter import filedialog, messagebox
 from GUI import main_page
@@ -10,6 +15,7 @@ class StartPage(Frame):
         self.controller = controller
         controller.title("InverseBach")
 
+        # variables
         self.save = IntVar()
         self.save.set(0)
         self.no_audio = IntVar()
@@ -19,6 +25,7 @@ class StartPage(Frame):
         self.audio_file = StringVar()
         self.audio_file.set("<replace me>")
 
+        # add directory selection frames
         self.ly_sframe = SelectionFrame(self, text="Select .ly score file generating location")
         self.ly_sframe.pack()
         self.ly_file_label = Label(self, text="Enter name of .ly score file")
