@@ -1,81 +1,22 @@
+'''
+created by Xinghao Li,Jan 4,2019
+'''
+
 from framework.note import *
 import random
 
 
-class Measure:
+class Measure:      # the variable for every single measure
 
     def __init__(self, location, chord, trans_measure):
-        self.location = location
-        self.beat = 3
-        self.chord_progression = chord  # only one chord per bar
-        self.top_notes = NoteList(self.beat)
-        self.bot_notes = NoteList(self.beat)
+        self.location = location        # location of the measure, a two digit decimal number with the tenth digit
+                                        # signifying line number and single digit representing the bar number of the line
+        self.beat = 3                   # there are 3 beats in a bar for a menuet
+        self.chord_progression = chord  # our current assumption is only one chord per bar
+        self.top_notes = NoteList(self.beat)    # The right hand melody, new data structure
+        self.bot_notes = NoteList(self.beat)    # The left hand harmony
         self.trans_measure=trans_measure        # True or False
-        self.motive=int(100)
-    '''
-    def add_chord_note(self, key):
-        A = {'c': 3, 'des': 4, 'd': 5, 'ees': 6, 'e': 7, 'f': 8,'ges': 9, 'g': 10, 'aes': 11, 'a': 0, 'bes': 1, 'b': 2}
-        # this is the mapping of the notes to the numbers, in order to solve the octaves problem
-        names = ['c', 'des', 'd', 'ees', 'e', 'f', 'ges', 'g', 'aes', 'a', 'bes', 'b'] * 2
-        key_index = -1
-        for i in range(0, len(names), 1):
-            if key == names[i]:
-                key_index = i
-                break
-        if key_index==-1:
-            print("False in matching key list")
-        key_notes = []
-        for i in [0, 2, 4, 5, 7, 9, 11]:  # for major scales only
-            key_notes = key_notes + [names[key_index + i]]
-        # print("key_notes: ", key_notes)
-        key_notes = key_notes * 2
-        chord_notes = [key_notes[self.chord_progression-1],key_notes[self.chord_progression+1],key_notes[self.chord_progression+3]]
-        # print("chord notes of this measure: ",chord_notes)
-        if self.location%10==4:
-            note = Note(A[chord_notes[0]], 3, True)     # adding the root of the chord in top notes
-            self.top_notes.add_chord_note(note)
-        else:
-            while True:
-                f1=random.choice([0, 1, 2])
-                f2=random.choice([0, 1, 2])
-                f3=random.choice([0, 1, 2])
-                if not(f1==f2==f3):
-                    break
-
-            note1 = Note(A[chord_notes[f1]], 1, True)
-            note2 = Note(A[chord_notes[f2]], 1, True)
-            note3 = Note(A[chord_notes[f3]], 1, True)
-            self.top_notes.add_chord_note(note1)
-            self.top_notes.add_chord_note(note2)
-            self.top_notes.add_chord_note(note3)
-            # corresponds to the three chord notes of a bar, this is with respect to the mapping of A
-        return True
-    '''
-    '''
-    
-    def add_harmony(self,key):
-        A = {'c': 3, 'des': 4, 'd': 5, 'ees': 6, 'e': 7, 'f': 8, 'ges': 9, 'g': 10, 'aes': 11, 'a': 0, 'bes': 1, 'b': 2}
-        # this is the mapping of the notes to the numbers, in order to solve the octaves problem
-        names = ['c', 'des', 'd', 'ees', 'e', 'f', 'ges', 'g', 'aes', 'a', 'bes', 'b'] * 2
-        key_index = -1
-        for i in range(0, len(names), 1):
-            if key == names[i]:
-                key_index = i
-                break
-        if key_index == -1:
-            print("False in matching key list")
-        key_notes = []
-        for i in [0, 2, 4, 5, 7, 9, 11]:  # for major scales only
-            key_notes = key_notes + [names[key_index + i]]
-        # print("key_notes: ", key_notes)
-        key_notes = key_notes * 2
-        chord_notes = [key_notes[self.chord_progression - 1], key_notes[self.chord_progression + 1],
-                       key_notes[self.chord_progression + 3]]
-        # print("chord notes of this measure: ",chord_notes)
-        note = Note(A[chord_notes[0]], 3, True)
-        self.bot_notes.add_chord_note(note)
-        return True
-    '''
+        self.motive=int(100)                    # the motive, used in gen passing
 
     def get(self):
         pass
@@ -106,17 +47,18 @@ class Measure:
 class NoteList:
 
     def __init__(self, beat):
-        self.beat = beat
-        self.length = 0
-        self.notes = []
+        self.beat = beat    # three beats per measure
+        self.length = 0     # currently how many beats are occupied
+        self.notes = []     # the list that takes in the notes
         self.index = 0
 
-    def add_chord_note(self, note):
+    def add_chord_note(self, note):     # adding a chord note to the notelist
         self.length += note.length()
         self.notes.append(note)
         return True
 
-    def insert_note(self,note,position):
+    def insert_note(self,note,position):    # inserting a note in a note list, position is the position that the
+                                            # inserted note will occupy after the incert
         if position==0:
             self.notes=[note]+self.notes
             return True
@@ -135,17 +77,11 @@ class NoteList:
     def get_notes(self):
         return self.notes
 
-    def print_notes(self):
+    def print_notes(self):      # just for debugging
         notes=[]
         for i in range(0,len(self.notes),1):
             notes = notes + [self.notes[i].frequency()]
         print(notes)
-        '''
-        notes = []
-        for i in range(0, len(self.notes), 1):
-            notes = notes + [self.notes[i].name()]
-        print(notes)
-        '''
         return True
 
     def __len__(self):
@@ -164,7 +100,7 @@ class NoteList:
     def __getitem__(self, item):
         return self.notes[item]
 
-    def print_notes_name(self):
+    def print_notes_name(self):     # for debugging as well
         notes=[]
         for i in range(0,len(self.notes),1):
             notes=notes+[self.notes[i].name()]

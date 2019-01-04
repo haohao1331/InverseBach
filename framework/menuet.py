@@ -1,3 +1,7 @@
+'''
+created by Xinghao Li,Jan 4,2019
+'''
+
 from framework.measure import *
 import random
 
@@ -15,27 +19,27 @@ class Menuet:
             transkey_index=random.choice([1,-1])
         else:
             transkey_index=transkey
-        self.key = key
-        self.transkey = key_list[index + transkey_index]
+        self.key = key      # the key of the menuet
+        self.transkey = key_list[index + transkey_index]    # the transpose key of the menuet
         self.A = {'a': 0, 'bes': 1, 'b': 2, 'c': 3, 'des': 4, 'd': 5, 'ees': 6, 'e': 7, 'f': 8, 'ges': 9, 'g': 10,
-                  'aes': 11}
+                  'aes': 11}    # will be later refferenced as A-frequency
         self.B = ['a', 'bes', 'b', 'c', 'des', 'd', 'ees', 'e', 'f', 'ges', 'g', 'aes'] * 2 + ['a']
-        self.key_index=self.A[self.key]
-        self.transkey_index=self.A[self.transkey]
-        self.key_notes=self.generate_key_notes()
-        self.transkey_notes=self.generate_transkey_notes()
+        # A and B are for converting between numbers and the name of the key
+        self.key_index=self.A[self.key]     # the A-frequency of the key
+        self.transkey_index=self.A[self.transkey]   # the A-frequency of the transkey
+        self.key_notes=self.generate_key_notes()    # list of key notes in A-freq
+        self.transkey_notes=self.generate_transkey_notes()  # list of transkey notes in A-freq
         self.content = []
 
-    def chord1(self):
+    def chord1(self):   # generating the chord progression for line 1
         m1 = Measure(11, 1,False)
-        m2 = Measure(12, random.choice([2, 4, 6]),False)
+        m2 = Measure(12, random.choice([2, 4, 6]),False)    # these are the chords that transition the keys
         m3 = Measure(13, 1,False)
         m4 = Measure(14, 5,False)
         self.content=self.content + [m1, m2, m3, m4]
         return True
 
-    def chord2(self):
-        # choosing which key to transpose to will happen in the init function
+    def chord2(self):       # generating the chord progression for line 2
         if self.key_index-self.transkey_index== 5 or self.transkey_index-self.key_index==7: # case where transkey +1
             transchord = random.choice([5, 6])  # the available transition chordes for the line
             m1 = Measure(21, 1, False)
@@ -55,7 +59,7 @@ class Menuet:
             print("error: second line chord not added")
         return True
 
-    def chord3(self):
+    def chord3(self):       # generating the chord progression for line 3
         sequence = random.choice([False])  # need to include True case
         if sequence and (self.transkey == 1):
             m1 = Measure(31, 1, True)  # based on transkey
@@ -72,7 +76,8 @@ class Menuet:
             self.content = self.content + [m1, m2, m3, m4]  # this returns only one possibility, many more available
         return True
 
-    def chord4(self):
+    def chord4(self):       # generating the chord progression for line 4, the last line will be same as the
+                            # first line but with an authentic cadence
         m1 = Measure(41, self.content[0].get_chord_progression(), False)
         m2 = Measure(42, self.content[1].get_chord_progression(), False)
         m3 = Measure(43, self.content[3].get_chord_progression(), False)
@@ -89,7 +94,7 @@ class Menuet:
             # print("note ", f1, "added in measure", i + 1)
         return True
 
-    def set_chord1(self):
+    def set_chord1(self):       # set chord note for the first bars of each line
         for i in range(0, len(self.content), 4):
             # print(i+1)
             # print(self.content[i].is_trans_measure(),self.content[i].get_chord_progression())
@@ -105,7 +110,7 @@ class Menuet:
             # print("note ", f3, "added in measure", i + 1)
         return True
 
-    def set_chord2(self):
+    def set_chord2(self):       # set chord note for the second bars of each line
         for i in range(1,len(self.content),4):
             # print(i+1)
             f0 = self.content[i - 1].get_top_notes().get_notes()[2].frequency()
@@ -122,7 +127,7 @@ class Menuet:
             # print("note ", f3, "added in measure", i + 1)
         return True
 
-    def set_chord3(self):
+    def set_chord3(self):       # set chord note for the third bars of each line
         for i in range(2, len(self.content), 4):
             # print(i + 1)
             f0 = self.content[i - 1].get_top_notes().get_notes()[2].frequency()
@@ -154,7 +159,7 @@ class Menuet:
             # print("note ", f3, "added in measure", i + 1)
         return True
 
-    def set_chord4(self):
+    def set_chord4(self):           # set chord note for the fourth bars of each line
         for i in range(3,len(self.content),4):
             # print("in set chord4: ",i + 1)
             f0 = self.content[i - 1].get_top_notes().get_notes()[2].frequency()
@@ -201,9 +206,9 @@ class Menuet:
 
         return True
 
-    def gen_passing(self):
+    def gen_passing(self):      # generates the passing note of each bar
         notes=[]
-        motives = [[], [2], [1], [0], [1,2],[0,2], [0,1], [0,1,2], [1.5, 0.5, 1],
+        motives = [[], [2], [1], [0], [1,2],[0,2], [0,1], [0,1,2], [1.5, 0.5, 1],   # the motives determines the rhythm of each bar
                    [1, 1.5, 0.5], [2, 1], [1, 2]]
         for i in range(0,len(self.content),1):
             notes=notes+[[]]
@@ -273,10 +278,9 @@ class Menuet:
                         self.content[i].get_top_notes().get_notes()[0].set_length(0.5)
                         fp = self.get_passing_note(self.content[i].is_trans_measure(), notes[i][0], notes[i][1], self.content[i].get_chord_progression())
                         self.content[i].get_top_notes().insert_note((Note(fp, 0.5, False)), 1)
-
         return True
 
-    def gen_cadence_harmony(self):
+    def gen_cadence_harmony(self):      # generating the left hand for each cadence part, fourth bar of each line
         pivot=18
         for i in range(3,len(self.content),4):
             # print("bar:",i+1)
@@ -324,7 +328,7 @@ class Menuet:
         print("cadence harmony complete")
         return True
 
-    def gen_first_measure_harmony(self):
+    def gen_first_measure_harmony(self):        # setting the left hand for the first measure
         pivot=15
         for i in range(0,len(self.content),4):
             # print("bar:", i + 1)
@@ -359,7 +363,7 @@ class Menuet:
         print("gen_first_measure_harmony complete")
         return True
 
-    def gen_harmony(self):
+    def gen_harmony(self):      # generates the rest of the harmony
         pivot = 15
         for i in range(0, len(self.content), 1):
             print("bar:", i + 1)
@@ -407,7 +411,7 @@ class Menuet:
         print("gen harmony complete")
         return True
 
-    def decorate_harmony(self):
+    def decorate_harmony(self):     # adding some passing notes to the harmony
         for i in range(0,len(self.content)-1,1):
             if self.content[i].get_location() not in [14,24,34,44]:
                 f1 = self.content[i].get_bot_notes().get_notes()[0].frequency()
@@ -417,14 +421,15 @@ class Menuet:
                 f=[f1,f2,f3,f4]
                 step2=[0,0,0]
                 for g in range(0,len(f)-1,1):
-                    if abs(f[g]-f[g+1]) in [3,4]:gi
+                    if abs(f[g]-f[g+1]) in [3,4]:
                         step2[g]=1
                         fp=self.get_passing_note(self.content[i].is_trans_measure(),f[g],f[g+1],self.content[i].get_chord_progression())
-                        self.content[i].get_bot_notes().get_notes()[g].set_length(0.5)
+                        self.content[i].get_bot_notes().get_notes()[g+sum(step2[0:g])].set_length(0.5)
                         self.content[i].get_bot_notes().insert_note(Note(fp, 0.5, False),1+g+sum(step2[0:g]))
         return True
 
-    def to_printable_format(self):
+    def to_printable_format(self):      # converts everything into new format such that it is able to create WAV file for
+                                        # the audio and pdf for the music score
         # print("to printable format")
         for i in range(0, len(self.content), 1):      # iteration for one measure
             for g in range(0, len(self.content[i].get_top_notes().get_notes()), 1):       # iteration for the top notes
@@ -453,13 +458,13 @@ class Menuet:
                 else:
                     name = self.B[self.content[i].get_bot_notes().get_notes()[g].frequency()] +',,'
                     self.content[i].get_bot_notes().get_notes()[g].set_name(name)
-        '''
+
         A={'c':130.8127827,'des':138.5913155,'d':146.832384,'ees':155.5634919,'e':164.8137785,'f':174.6141157,
            'ges':184.9972114,'g':195.997718,'aes':207.6523488,'a':220,'bes':233.0818808,'b':246.9416506}
 
         for i in range(0,len(self.content),1):          # converting into real frequency
             for g in range(0,len(self.content[i].get_top_notes().get_notes()),1):
-                if self.content[i].get_top_notes()[g].name()[0]!=',':       # top notes with c'
+                if self.content[i].get_top_notes()[g].name()[len(self.content[i].get_top_notes()[g].name())-1]=='\'':       # top notes with c'
                     accum=0
                     for h in range(len(self.content[i].get_top_notes()[g].name())-1,-1,-1):
                         if self.content[i].get_top_notes()[g].name()[h]!='\'':
@@ -467,36 +472,40 @@ class Menuet:
                         accum=accum+1
                     frequency = A[self.content[i].get_top_notes()[g].name()[0:len(self.content[i].get_top_notes()[g].name())-accum]]*2**accum
                     self.content[i].get_top_notes()[g].set_frequency(frequency)
-                elif self.content[i].get_top_notes()[g].name()[0]==',':     # top notes with ,c
-                    accum = 0
-                    for h in range(0, len(self.content[i].get_top_notes()[g].name()), 1):
-                        if self.content[i].get_top_notes()[g].name()[h] != ',':
+                elif self.content[i].get_top_notes()[g].name()[len(self.content[i].get_top_notes()[g].name())-1]==',':       # top notes with c,
+                    accum=0
+                    for h in range(len(self.content[i].get_top_notes()[g].name())-1,-1,-1):
+                        if self.content[i].get_top_notes()[g].name()[h]!=',':
                             break
-                        accum = accum + 1
-                    frequency = A[self.content[i].get_top_notes()[g].name()[0:accum]] /(2 ** (len(self.content[i].get_top_notes()[g].name()) - accum))
+                        accum=accum+1
+                    frequency = A[self.content[i].get_top_notes()[g].name()[0:len(self.content[i].get_top_notes()[g].name())-accum]]/(2**accum)
+                    self.content[i].get_top_notes()[g].set_frequency(frequency)
+                else:
+                    frequency = A[self.content[i].get_top_notes()[g].name()]
                     self.content[i].get_top_notes()[g].set_frequency(frequency)
             for g in range(0, len(self.content[i].get_bot_notes().get_notes()), 1):
-                if self.content[i].get_bot_notes()[g].name()[0]!=',':       # bot notes with c'
-                    accum = 0
-                    for h in range(len(self.content[i].get_bot_notes()[g].name()) - 1, -1, -1):
-                        if self.content[i].get_bot_notes()[g].name()[h] != '\'':
+                if self.content[i].get_bot_notes()[g].name()[len(self.content[i].get_bot_notes()[g].name())-1]=='\'':       # bot notes with c'
+                    accum=0
+                    for h in range(len(self.content[i].get_bot_notes()[g].name())-1,-1,-1):
+                        if self.content[i].get_bot_notes()[g].name()[h]!='\'':
                             break
-                        accum = accum + 1
-                    frequency = A[self.content[i].get_bot_notes()[g].name()[0:len(self.content[i].get_bot_notes()[g].name()) - accum]] * 2 ** accum
+                        accum=accum+1
+                    frequency = A[self.content[i].get_bot_notes()[g].name()[0:len(self.content[i].get_bot_notes()[g].name())-accum]]*2**accum
                     self.content[i].get_bot_notes()[g].set_frequency(frequency)
-                elif self.content[i].get_bot_notes()[g].name()[0]==',':     # bot notes with ,c
-                    accum = 0
-                    for h in range(0, len(self.content[i].get_bot_notes()[g].name()), 1):
-                        if self.content[i].get_bot_notes()[g].name()[h] != ',':
+                elif self.content[i].get_bot_notes()[g].name()[len(self.content[i].get_bot_notes()[g].name())-1]==',':       # bot notes with c,
+                    accum=0
+                    for h in range(len(self.content[i].get_bot_notes()[g].name())-1,-1,-1):
+                        if self.content[i].get_bot_notes()[g].name()[h]!=',':
                             break
-                        accum = accum + 1
-                    frequency = A[self.content[i].get_bot_notes()[g].name()[accum:len(self.content[i].get_bot_notes()[g].name())]] / (
-                                2 ** (len(self.content[i].get_bot_notes()[g].name()) - accum))
+                        accum=accum+1
+                    frequency = A[self.content[i].get_bot_notes()[g].name()[0:len(self.content[i].get_bot_notes()[g].name())-accum]]/(2**accum)
                     self.content[i].get_bot_notes()[g].set_frequency(frequency)
-        '''
+                else:
+                    frequency = A[self.content[i].get_bot_notes()[g].name()]
+                    self.content[i].get_bot_notes()[g].set_frequency(frequency)
         return True
 
-    def generate(self):
+    def generate(self):     # generating the menuet
         self.chord1()
         self.chord2()
         self.chord3()
@@ -520,7 +529,7 @@ class Menuet:
         self.get()
         return True
 
-    def get(self):
+    def get(self):      # for debugging
         print("key is" ,self.key)
         print("transkey is",self.transkey)
         print("key_notes:      ", self.key_notes)
@@ -557,7 +566,7 @@ class Menuet:
     def get_transkey(self):
         return self.transkey
 
-    def generate_key_notes(self):
+    def generate_key_notes(self):       # generates all the notes that belong to key, in A freq
         for i in range(0, len(self.B), 1):
             if self.key == self.B[i]:
                 self.key_index = i
@@ -580,7 +589,7 @@ class Menuet:
         # print("key_notes: ", storekey)
         return storekey
 
-    def generate_transkey_notes(self):
+    def generate_transkey_notes(self):      # generates all the notes that belong to transkey, in A freq
         for i in range(0, len(self.B), 1):
             if self.transkey == self.B[i]:
                 self.transkey_index = i
@@ -604,6 +613,7 @@ class Menuet:
         return storetranskey
 
     def chord_to_note(self,is_transkey,chord_note):   # is_transkey is True/False, chord_note is the note position 1-7
+                                            # returns the corresponding list of notes when given the chord progression
         convert = [11, 0, 2, 4, 5, 7, 9, 11]
         if not is_transkey:
             s = self.key_index
@@ -618,7 +628,8 @@ class Menuet:
         # print(notes)
         return notes
 
-    def note_to_chord(self,is_transkey,note):
+    def note_to_chord(self,is_transkey,note):   # is_transkey is True/False, note is the note position in A-freq
+                                    # returns the corresponding chord that this note belongs to
         chord=-10
         start_position=-10
         if not is_transkey:
@@ -646,12 +657,15 @@ class Menuet:
             return chord
 
     def get_chord_notes(self,is_transkey,chord_progression):    # is_transkey is True/False, chord_progression is 1-7
+                                                # returns the list of chord_notes that belongs to this chord_progression
         chord_notes=self.chord_to_note(is_transkey,chord_progression)+self.chord_to_note(is_transkey,chord_progression+2)+self.chord_to_note(is_transkey, chord_progression + 4)
         chord_notes.sort()
         # print(chord_notes)
         return chord_notes
 
     def closest(self,pivot,list,option):    # have a pivot note, and a list of notes to choose from, option is how many return values
+                    # in option 1, returns the single note that is closest to the pivot note, in A-freq
+                    # in option 2, returns a list of 2 notes that is closest but different to the pivot note, in A-freq
         L=list
         L.sort()
         # print(L)
@@ -680,13 +694,6 @@ class Menuet:
                 return L[len(L)-1]
             else:
                 for i in range(0,len(L)-1,1):
-                    '''
-                    if L[i]==pivot:
-                        if abs(L[i-1]-pivot)<abs(L[i+1]-pivot):
-                            return L[i-1]
-                        else:
-                            return L[i+1]
-                    '''
                     if L[i]<=pivot<=L[i+1]:
                         if abs(L[i]-pivot)<abs(L[i+1]-pivot):
                             return L[i]
@@ -697,7 +704,9 @@ class Menuet:
         print("option: ",option)
         return False
 
-    def get_passing_note(self,is_transkey,note1,note2,chord_progression):    # note1,note2 in A-frequency,chord_progression is 1-7,option
+    def get_passing_note(self,is_transkey,note1,note2,chord_progression):    # note1,note2 in A-frequency,chord_progression is 1-7
+                                    # is_transkey is True/False
+                                    # returns the suited passing not that fits in between the input two notes, in A-freq
         passing=-1
         if note1 == note2:
             passing=self.closest(note1,(self.chord_to_note(is_transkey,(self.note_to_chord(is_transkey, note1) + random.choice([1, -1])))),1)
