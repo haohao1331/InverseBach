@@ -15,7 +15,7 @@ class MainPage(Frame):
         self.dance_option = OptionMenu(self, self.dance, "Menuet")
         self.dance_option.grid(row=0, column=1)
 
-        self.key_option = OptionMenu(self, self.key, 'c', 'd', 'e', 'f', 'g', 'a', 'b', 'aes', 'bes', 'des', 'ees', 'ges')
+        self.key_option = OptionMenu(self, self.key, 'random', 'c', 'd', 'e', 'f', 'g', 'a', 'b', 'aes', 'bes', 'des', 'ees', 'ges')
         self.key_option.grid(row=1, column=0)
         self.transkey_scale = Scale(self, variable=self.transkey, from_=-1, to=1, label='transpose key', orient='horizontal')
         self.transkey_scale.grid(row=2, column=0)
