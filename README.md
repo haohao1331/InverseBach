@@ -1,9 +1,9 @@
 # InverseBach
-![InverseBach](GUI/inversebach.jpg)
-## version
+![InverseBach](images/inversebach.jpg)
+## Version
 1.0.0
 ## Introduction
-A program that generates user specified random music.
+A program that randomly generates user specified music. 
 ## Dependency
 * python3, command: `sudo apt-get install python3`
 * GNU Lilypond, command: `sudo apt-get install lilypond`
@@ -57,3 +57,7 @@ Lastly is the harmony. Usually 3rds and 6ths forms good harmony. That is, when t
 harmony forms a 3rd or 6th interval with the melody notes, it sounds strong.  
 Based on this principle, the harmony chord notes are first selected then decorated 
 to for the base line of the menuet.
+
+![InverseBach](images/brief_algorith1.jpeg)
+![InverseBach](images/brief_algorith2.jpeg)
+![InverseBach](images/referrences.jpeg)

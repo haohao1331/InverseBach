@@ -19,7 +19,7 @@ class Menuet:
             transkey_index=random.choice([1,-1])
         else:
             transkey_index=transkey
-        self.key = key      # the key of the menuet
+        self.key = key_list[index]      # the key of the menuet
         self.transkey = key_list[index + transkey_index]    # the transpose key of the menuet
         self.A = {'a': 0, 'bes': 1, 'b': 2, 'c': 3, 'des': 4, 'd': 5, 'ees': 6, 'e': 7, 'f': 8, 'ges': 9, 'g': 10,
                   'aes': 11}    # will be later refferenced as A-frequency
@@ -91,77 +91,54 @@ class Menuet:
             available=self.chord_to_note(self.content[i].is_trans_measure(),1)
             f1=self.closest(starting_note,available,1)      # this allows f1 to be the same as the pivot
             self.content[i].get_top_notes().add_chord_note(Note(f1, 1, True))
-            # print("note ", f1, "added in measure", i + 1)
         return True
 
     def set_chord1(self):       # set chord note for the first bars of each line
         for i in range(0, len(self.content), 4):
-            # print(i+1)
-            # print(self.content[i].is_trans_measure(),self.content[i].get_chord_progression())
             available=self.get_chord_notes(self.content[i].is_trans_measure(),self.content[i].get_chord_progression())
-            # print(available)
             f1=self.content[i].get_top_notes().get_notes()[0].frequency()
-            # print(self.closest(f1,available,2))
             f2=random.choice(self.closest(f1,available,2))
             f3=random.choice(self.closest(f2,available,2))
             self.content[i].get_top_notes().add_chord_note(Note(f2, 1, True))
             self.content[i].get_top_notes().add_chord_note(Note(f3, 1, True))
-            # print("note ", f2, "added in measure", i + 1)
-            # print("note ", f3, "added in measure", i + 1)
         return True
 
     def set_chord2(self):       # set chord note for the second bars of each line
         for i in range(1,len(self.content),4):
-            # print(i+1)
             f0 = self.content[i - 1].get_top_notes().get_notes()[2].frequency()
             available=self.get_chord_notes(self.content[i].is_trans_measure(),self.content[i].get_chord_progression())
-            # print(available)
             f1 = random.choice(self.closest(f0, available, 2))
             f2 = random.choice(self.closest(f1, available, 2))
             f3 = random.choice(self.closest(f2, available, 2))
             self.content[i].get_top_notes().add_chord_note(Note(f1, 1, True))
             self.content[i].get_top_notes().add_chord_note(Note(f2, 1, True))
             self.content[i].get_top_notes().add_chord_note(Note(f3, 1, True))
-            # print("note ", f1, "added in measure", i + 1)
-            # print("note ", f2, "added in measure", i + 1)
-            # print("note ", f3, "added in measure", i + 1)
         return True
 
     def set_chord3(self):       # set chord note for the third bars of each line
         for i in range(2, len(self.content), 4):
-            # print(i + 1)
             f0 = self.content[i - 1].get_top_notes().get_notes()[2].frequency()
             available = self.get_chord_notes(self.content[i].is_trans_measure(),
                                              self.content[i].get_chord_progression())
-            # print(available)
             f1 = random.choice(self.closest(f0, available, 2))
             f2 = random.choice(self.closest(f1, available, 2))
-            # print(self.content[i].get_location())
             if self.content[i].get_location()==33:
-                # print(available)
                 fifth=self.chord_to_note(self.content[i].is_trans_measure(),5)
-                # print(fifth)
                 no5=[]
                 for g in range(0,len(available),1):
                     if available[g] not in fifth:
                         no5=no5+[available[g]]
 
                 f3 = random.choice(self.closest(f2, no5, 2))
-                # print(f3)
             else:
                 f3 = random.choice(self.closest(f2, available, 2))
             self.content[i].get_top_notes().add_chord_note(Note(f1, 1, True))
             self.content[i].get_top_notes().add_chord_note(Note(f2, 1, True))
             self.content[i].get_top_notes().add_chord_note(Note(f3, 1, True))
-            # print("bar: ",i+1,"  length: ",len(self.content[i].get_top_notes().get_notes()))
-            # print("note ", f1, "added in measure", i + 1)
-            # print("note ", f2, "added in measure", i + 1)
-            # print("note ", f3, "added in measure", i + 1)
         return True
 
     def set_chord4(self):           # set chord note for the fourth bars of each line
         for i in range(3,len(self.content),4):
-            # print("in set chord4: ",i + 1)
             f0 = self.content[i - 1].get_top_notes().get_notes()[2].frequency()
             if i==3:
                 if self.note_to_chord(self.content[i].is_trans_measure(),f0)==1:
@@ -200,9 +177,7 @@ class Menuet:
             else:
                 print("false in set_chord4")
             f1 = self.closest(f0, available, 1)
-            # print(f0,available)
             self.content[i].get_top_notes().add_chord_note(Note(f1, 3, True))
-            # print("note ", f1, "added in measure", i + 1)
 
         return True
 
@@ -214,7 +189,6 @@ class Menuet:
             notes=notes+[[]]
             for g in range(0, len(self.content[i].get_top_notes().get_notes()), 1):
                 notes[i]=notes[i]+[self.content[i].get_top_notes().get_notes()[g].frequency()]
-        # print(notes, len(notes))
         self.content[0].set_motive(random.randint(1, 9))
         self.content[1].set_motive(random.randint(0, 9))
         self.content[2].set_motive(random.randint(0, 9))
@@ -233,36 +207,26 @@ class Menuet:
         self.content[15].set_motive(12)
         for i in range(0,len(self.content),1):
             if self.content[i].get_motive() == 11:    # adding the cadence at the end of line 3
-                # print(i+1, self.content[i].get_motive())
                 self.content[i].get_top_notes().get_notes()[0].set_length(2)
                 # setting the chord note to length 2
                 f1 = self.content[i].get_top_notes().get_notes()[0].frequency()
                 f2 = self.closest(f1,self.chord_to_note(self.content[i].is_trans_measure(),self.note_to_chord(self.content[i].is_trans_measure(),f1)+1),1)
                 self.content[i].get_top_notes().insert_note(Note(f2,1,False),0)
             elif self.content[i].get_motive() == 12:  # doing noting
-                # print(i+1, self.content[i].get_motive())
                 pass
             elif self.content[i].get_motive() == 8:
-                # print(i+1, self.content[i].get_motive())
                 self.content[i].get_top_notes().get_notes()[0].set_length(1.5)
                 self.content[i].get_top_notes().get_notes()[1].set_length(0.5)
             elif self.content[i].get_motive() == 9:
-                # print(i+1, self.content[i].get_motive())
                 self.content[i].get_top_notes().get_notes()[1].set_length(1.5)
                 self.content[i].get_top_notes().get_notes()[2].set_length(0.5)
             elif self.content[i].get_motive() == 10:
-                # print(i+1, self.content[i].get_motive())
                 pass
             elif self.content[i].get_motive() == 0:
-                # print(i+1, self.content[i].get_motive())
                 pass
             else:                                       # adding simple passing notes
-                # print(len(notes[i]))
                 step2 = [0, 0, 0]
-                # print(i+1, motives[int(self.content[i].get_motive())])
                 for g in motives[int(self.content[i].get_motive())]:
-                    # print(step2)
-                    # print(motives[int(self.content[i].get_motive())])
                     if g==2:
                         step2[2]=1
                         self.content[i].get_top_notes().get_notes()[2 + step2[0]+step2[1]].set_length(0.5)
@@ -283,7 +247,6 @@ class Menuet:
     def gen_cadence_harmony(self):      # generating the left hand for each cadence part, fourth bar of each line
         pivot=18
         for i in range(3,len(self.content),4):
-            # print("bar:",i+1)
             if self.content[i].get_location()//10==3:
                 f1 = self.closest(pivot,self.chord_to_note(self.content[i].is_trans_measure(),5),1)
                 self.content[i].get_bot_notes().add_chord_note(Note(f1, 3, True))
@@ -325,22 +288,17 @@ class Menuet:
                     self.content[i].get_bot_notes().add_chord_note(Note(f4, 1, True))
                 else:
                     print("error in setting phrase ending")
-        print("cadence harmony complete")
         return True
 
     def gen_first_measure_harmony(self):        # setting the left hand for the first measure
         pivot=15
         for i in range(0,len(self.content),4):
-            # print("bar:", i + 1)
             top_chord_notes=[]
             for g in range(0,len(self.content[i].get_top_notes().get_notes()),1):
                 if self.content[i].get_top_notes().get_notes()[g].is_chord_note():
                     top_chord_notes=top_chord_notes+[self.content[i].get_top_notes().get_notes()[g].frequency()]
-            # print("top chord notes:",top_chord_notes)
             f1=self.closest(pivot,self.chord_to_note(self.content[i].is_trans_measure(),self.content[i].get_chord_progression()),1)
-            # print("top chord notes[1]:", self.note_to_chord(self.content[i].is_trans_measure(),top_chord_notes[1]))
             if self.note_to_chord(self.content[i].is_trans_measure(),top_chord_notes[1])==5 or self.note_to_chord(self.content[i].is_trans_measure(),top_chord_notes[1])==1:
-                # print(self.chord_to_note(self.content[i].is_trans_measure(),3))
                 f2=self.closest(f1,self.chord_to_note(self.content[i].is_trans_measure(),3),1)
             elif self.note_to_chord(self.content[i].is_trans_measure(),top_chord_notes[1])==3:
                 one=self.closest(f1,self.chord_to_note(self.content[i].is_trans_measure(),1),1)
@@ -348,7 +306,6 @@ class Menuet:
                 f2=random.choice([one,five])
             else:
                 print("error in first measure harmony bar",i+1)
-            # print("top chord notes[2]:", self.note_to_chord(self.content[i].is_trans_measure(), top_chord_notes[2]))
             if self.note_to_chord(self.content[i].is_trans_measure(),top_chord_notes[2])==5 or self.note_to_chord(self.content[i].is_trans_measure(),top_chord_notes[2])==1:
                 f3=self.closest(f2,self.chord_to_note(self.content[i].is_trans_measure(),3),1)
             elif self.note_to_chord(self.content[i].is_trans_measure(),top_chord_notes[2])==3:
@@ -360,21 +317,16 @@ class Menuet:
             self.content[i].get_bot_notes().add_chord_note(Note(f1, 1, True))
             self.content[i].get_bot_notes().add_chord_note(Note(f2, 1, True))
             self.content[i].get_bot_notes().add_chord_note(Note(f3, 1, True))
-        print("gen_first_measure_harmony complete")
         return True
 
     def gen_harmony(self):      # generates the rest of the harmony
         pivot = 15
         for i in range(0, len(self.content), 1):
-            print("bar:", i + 1)
             if self.content[i].get_location()%10 in [2,3]:
-                print("chord progression of bar",self.content[i].get_chord_progression())
                 top_chord_notes = []
                 for g in range(0, len(self.content[i].get_top_notes().get_notes()), 1):
                     if self.content[i].get_top_notes().get_notes()[g].is_chord_note():
                         top_chord_notes = top_chord_notes + [self.content[i].get_top_notes().get_notes()[g].frequency()]
-                # print(top_chord_notes)
-                print("top chord notes[0]=", self.note_to_chord(self.content[i].is_trans_measure(), top_chord_notes[0]))
                 if abs(self.note_to_chord(self.content[i].is_trans_measure(),top_chord_notes[0]) - self.content[i].get_chord_progression()) in [0,4,3]:
                     f1 = self.closest(pivot, self.chord_to_note(self.content[i].is_trans_measure(), self.content[i].get_chord_progression()+2), 1)
                 elif abs(self.note_to_chord(self.content[i].is_trans_measure(), top_chord_notes[0]) - self.content[i].get_chord_progression()) in [2,5]:
@@ -383,9 +335,6 @@ class Menuet:
                     f1 = random.choice([one, five])
                 else:
                     print("error in gen harmony bar:",i+1)
-
-                print("top chord notes[1]=",
-                          self.note_to_chord(self.content[i].is_trans_measure(), top_chord_notes[1]))
                 if abs(self.note_to_chord(self.content[i].is_trans_measure(),top_chord_notes[1]) - self.content[i].get_chord_progression()) in [0,4,3]:
                     f2 = self.closest(pivot, self.chord_to_note(self.content[i].is_trans_measure(), self.content[i].get_chord_progression()+2), 1)
                 elif abs(self.note_to_chord(self.content[i].is_trans_measure(), top_chord_notes[1]) - self.content[i].get_chord_progression()) in [2,5]:
@@ -394,9 +343,6 @@ class Menuet:
                     f2 = random.choice([one, five])
                 else:
                     print("error in gen harmony bar:",i+1)
-
-                print("top chord notes[2]=",
-                          self.note_to_chord(self.content[i].is_trans_measure(), top_chord_notes[2]))
                 if abs(self.note_to_chord(self.content[i].is_trans_measure(),top_chord_notes[2]) - self.content[i].get_chord_progression()) in [0,4,3]:
                     f3 = self.closest(pivot, self.chord_to_note(self.content[i].is_trans_measure(), self.content[i].get_chord_progression()+2), 1)
                 elif abs(self.note_to_chord(self.content[i].is_trans_measure(), top_chord_notes[2]) - self.content[i].get_chord_progression()) in [2,5]:
@@ -408,7 +354,6 @@ class Menuet:
                 self.content[i].get_bot_notes().add_chord_note(Note(f1, 1, True))
                 self.content[i].get_bot_notes().add_chord_note(Note(f2, 1, True))
                 self.content[i].get_bot_notes().add_chord_note(Note(f3, 1, True))
-        print("gen harmony complete")
         return True
 
     def decorate_harmony(self):     # adding some passing notes to the harmony
@@ -430,31 +375,25 @@ class Menuet:
 
     def to_printable_format(self):      # converts everything into new format such that it is able to create WAV file for
                                         # the audio and pdf for the music score
-        # print("to printable format")
         for i in range(0, len(self.content), 1):      # iteration for one measure
             for g in range(0, len(self.content[i].get_top_notes().get_notes()), 1):       # iteration for the top notes
                 if self.content[i].get_top_notes().get_notes()[g].frequency()>=15:
                     name = self.B[self.content[i].get_top_notes().get_notes()[g].frequency()-12]+ '\'\''
                     self.content[i].get_top_notes().get_notes()[g].set_name(name)
-                    # print("top ",self.content[i].get_top_notes().get_notes()[g].frequency(),name)
                 elif self.content[i].get_top_notes().get_notes()[g].frequency()>=3:
                     name = self.B[self.content[i].get_top_notes().get_notes()[g].frequency()] + '\''
                     self.content[i].get_top_notes().get_notes()[g].set_name(name)
-                    # print("top ",self.content[i].get_top_notes().get_notes()[g].frequency(), name)
                 else:
                     name = self.B[self.content[i].get_top_notes().get_notes()[g].frequency()]
                     self.content[i].get_top_notes().get_notes()[g].set_name(name)
         for i in range(0, len(self.content), 1):      # iteration for one measure
             for g in range(0, len(self.content[i].get_bot_notes().get_notes()), 1):     # iteration for bot notes
-                # print("bar: " ,i+1)
                 if self.content[i].get_bot_notes().get_notes()[g].frequency()>=15:
                     name = self.B[self.content[i].get_bot_notes().get_notes()[g].frequency()-12]
                     self.content[i].get_bot_notes().get_notes()[g].set_name(name)
-                    # print("top ",self.content[i].get_top_notes().get_notes()[g].frequency(),name)
                 elif self.content[i].get_bot_notes().get_notes()[g].frequency()>=3:
                     name = self.B[self.content[i].get_bot_notes().get_notes()[g].frequency()] +','
                     self.content[i].get_bot_notes().get_notes()[g].set_name(name)
-                    # print("top ",self.content[i].get_top_notes().get_notes()[g].frequency(), name)
                 else:
                     name = self.B[self.content[i].get_bot_notes().get_notes()[g].frequency()] +',,'
                     self.content[i].get_bot_notes().get_notes()[g].set_name(name)
@@ -526,7 +465,6 @@ class Menuet:
         print("Done harmony generation")
         self.to_printable_format()
         print("Done generation")
-        self.get()
         return True
 
     def get(self):      # for debugging
@@ -586,7 +524,6 @@ class Menuet:
         for i in range(0,len(key_notes),1):
             if 0<=key_notes[i]<=24:
                 storekey=storekey+[key_notes[i]]
-        # print("key_notes: ", storekey)
         return storekey
 
     def generate_transkey_notes(self):      # generates all the notes that belong to transkey, in A freq
@@ -609,7 +546,6 @@ class Menuet:
         for i in range(0,len(transkey_notes),1):
             if 0<=transkey_notes[i]<=24:
                 storetranskey=storetranskey+[transkey_notes[i]]
-        # print("transkey_notes ", storetranskey)
         return storetranskey
 
     def chord_to_note(self,is_transkey,chord_note):   # is_transkey is True/False, chord_note is the note position 1-7
@@ -620,12 +556,10 @@ class Menuet:
         else:
             s = self.transkey_index
         note = (s + convert[(chord_note % 7)]) % 12
-        # print(note)
         notes = []
         for i in range(0, 25, 1):
             if i % 12==note:
                 notes = notes + [int(i)]
-        # print(notes)
         return notes
 
     def note_to_chord(self,is_transkey,note):   # is_transkey is True/False, note is the note position in A-freq
@@ -653,14 +587,12 @@ class Menuet:
             print("cannot find the corresponding chord")
             return False
         else:
-            # print(chord)
             return chord
 
     def get_chord_notes(self,is_transkey,chord_progression):    # is_transkey is True/False, chord_progression is 1-7
                                                 # returns the list of chord_notes that belongs to this chord_progression
         chord_notes=self.chord_to_note(is_transkey,chord_progression)+self.chord_to_note(is_transkey,chord_progression+2)+self.chord_to_note(is_transkey, chord_progression + 4)
         chord_notes.sort()
-        # print(chord_notes)
         return chord_notes
 
     def closest(self,pivot,list,option):    # have a pivot note, and a list of notes to choose from, option is how many return values
@@ -668,9 +600,7 @@ class Menuet:
                     # in option 2, returns a list of 2 notes that is closest but different to the pivot note, in A-freq
         L=list
         L.sort()
-        # print(L)
         if option==2:
-            # print(L[0])
             for i in range(0,len(L),1):
                 if L[i]==pivot:
                     if i==0:
@@ -699,9 +629,6 @@ class Menuet:
                             return L[i]
                         else:
                             return L[i+1]
-        print("pivot: ",pivot)
-        print("list: ",list)
-        print("option: ",option)
         return False
 
     def get_passing_note(self,is_transkey,note1,note2,chord_progression):    # note1,note2 in A-frequency,chord_progression is 1-7
@@ -712,8 +639,6 @@ class Menuet:
             passing=self.closest(note1,(self.chord_to_note(is_transkey,(self.note_to_chord(is_transkey, note1) + random.choice([1, -1])))),1)
         elif abs(note1-note2)== 1 or abs(note1 - note2) == 2:
             x=self.closest(note1,self.get_chord_notes(is_transkey,chord_progression),2)
-            # print("x: ",x)
-            # print(self.chord_to_note(is_transkey,self.note_to_chord(is_transkey,note1)))
             diff=[abs(x[0]-note2),abs(x[1]-note2)]
             if diff[0]>diff[1]:
                 passing=x[1]
