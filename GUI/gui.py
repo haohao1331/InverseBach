@@ -46,6 +46,7 @@ class GUIMain(Tk):
         c = converter.Converter(m)
 
         # audio output
+
         if f.no_audio.get() == 0:
             sample = c.convert_to_wav(framerate=8000)
             a = audio_generator.AudioOut(2, path=f'{audio_dir}/{audio_file}', framerate=8000)
@@ -62,5 +63,3 @@ class GUIMain(Tk):
         g.build(score_dir)
 
         print("Generating process successful, enjoy your music!")
-
-    # def file_check(self, ly, score, audio):
