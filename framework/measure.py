@@ -12,7 +12,7 @@ class Measure:
         self.bot_notes = NoteList(self.beat)
         self.trans_measure=trans_measure        # True or False
         self.motive=int(100)
-
+    '''
     def add_chord_note(self, key):
         A = {'c': 3, 'des': 4, 'd': 5, 'ees': 6, 'e': 7, 'f': 8,'ges': 9, 'g': 10, 'aes': 11, 'a': 0, 'bes': 1, 'b': 2}
         # this is the mapping of the notes to the numbers, in order to solve the octaves problem
@@ -50,7 +50,9 @@ class Measure:
             self.top_notes.add_chord_note(note3)
             # corresponds to the three chord notes of a bar, this is with respect to the mapping of A
         return True
-
+    '''
+    '''
+    
     def add_harmony(self,key):
         A = {'c': 3, 'des': 4, 'd': 5, 'ees': 6, 'e': 7, 'f': 8, 'ges': 9, 'g': 10, 'aes': 11, 'a': 0, 'bes': 1, 'b': 2}
         # this is the mapping of the notes to the numbers, in order to solve the octaves problem
@@ -73,6 +75,7 @@ class Measure:
         note = Note(A[chord_notes[0]], 3, True)
         self.bot_notes.add_chord_note(note)
         return True
+    '''
 
     def get(self):
         pass

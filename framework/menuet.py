@@ -4,19 +4,19 @@ import random
 
 class Menuet:
 
-    def __init__(self, key=0, transkey=0):
-        keys = ['f', 'c', 'g', 'd', 'a', 'e', 'b', 'ges', 'des', 'aes', 'ees', 'bes', 'f','c']
-
-        if key==0:
+    def __init__(self, key='random', transkey=0):
+        keys = {'c':1, 'g':2, 'd':3, 'a':4, 'e':5, 'b':6, 'ges':7, 'des':8, 'aes':9, 'ees':10, 'bes':11, 'f':12}
+        key_list = ['f','c', 'g', 'd', 'a', 'e', 'b', 'ges', 'des', 'aes', 'ees', 'bes', 'f','c']
+        if key=='random':
             index=random.randint(1,12)
         else:
-            index=key
+            index=keys[key]
         if transkey==0:
             transkey_index=random.choice([1,-1])
         else:
             transkey_index=transkey
-        self.key = keys[index]
-        self.transkey = keys[index + transkey_index]
+        self.key = key
+        self.transkey = key_list[index + transkey_index]
         self.A = {'a': 0, 'bes': 1, 'b': 2, 'c': 3, 'des': 4, 'd': 5, 'ees': 6, 'e': 7, 'f': 8, 'ges': 9, 'g': 10,
                   'aes': 11}
         self.B = ['a', 'bes', 'b', 'c', 'des', 'd', 'ees', 'e', 'f', 'ges', 'g', 'aes'] * 2 + ['a']
@@ -408,6 +408,20 @@ class Menuet:
         return True
 
     def decorate_harmony(self):
+        for i in range(0,len(self.content)-1,1):
+            if self.content[i].get_location() not in [14,24,34,44]:
+                f1 = self.content[i].get_bot_notes().get_notes()[0].frequency()
+                f2 = self.content[i].get_bot_notes().get_notes()[1].frequency()
+                f3 = self.content[i].get_bot_notes().get_notes()[2].frequency()
+                f4 = self.content[i+1].get_bot_notes().get_notes()[0].frequency()
+                f=[f1,f2,f3,f4]
+                step2=[0,0,0]
+                for g in range(0,len(f)-1,1):
+                    if abs(f[g]-f[g+1]) in [3,4]:gi
+                        step2[g]=1
+                        fp=self.get_passing_note(self.content[i].is_trans_measure(),f[g],f[g+1],self.content[i].get_chord_progression())
+                        self.content[i].get_bot_notes().get_notes()[g].set_length(0.5)
+                        self.content[i].get_bot_notes().insert_note(Note(fp, 0.5, False),1+g+sum(step2[0:g]))
         return True
 
     def to_printable_format(self):
