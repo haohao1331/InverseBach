@@ -398,10 +398,9 @@ class Menuet:
                     name = self.B[self.content[i].get_bot_notes().get_notes()[g].frequency()] +',,'
                     self.content[i].get_bot_notes().get_notes()[g].set_name(name)
 
-        A={'c':130.8127827,'des':138.5913155,'d':146.832384,'ees':155.5634919,'e':164.8137785,'f':174.6141157,
-           'ges':184.9972114,'g':195.997718,'aes':207.6523488,'a':220,'bes':233.0818808,'b':246.9416506}
+        A={'c':48,'des':49,'d':50,'ees':51,'e':52,'f':53,'ges':54,'g':55,'aes':56,'a':57,'bes':58,'b':59}
 
-        for i in range(0,len(self.content),1):          # converting into real frequency
+        for i in range(0,len(self.content),1):          # converting into piano keys for audio
             for g in range(0,len(self.content[i].get_top_notes().get_notes()),1):
                 if self.content[i].get_top_notes()[g].name()[len(self.content[i].get_top_notes()[g].name())-1]=='\'':       # top notes with c'
                     accum=0
@@ -409,7 +408,7 @@ class Menuet:
                         if self.content[i].get_top_notes()[g].name()[h]!='\'':
                             break
                         accum=accum+1
-                    frequency = A[self.content[i].get_top_notes()[g].name()[0:len(self.content[i].get_top_notes()[g].name())-accum]]*2**accum
+                    frequency = A[self.content[i].get_top_notes()[g].name()[0:len(self.content[i].get_top_notes()[g].name())-accum]]+12*accum
                     self.content[i].get_top_notes()[g].set_frequency(frequency)
                 elif self.content[i].get_top_notes()[g].name()[len(self.content[i].get_top_notes()[g].name())-1]==',':       # top notes with c,
                     accum=0
@@ -417,7 +416,7 @@ class Menuet:
                         if self.content[i].get_top_notes()[g].name()[h]!=',':
                             break
                         accum=accum+1
-                    frequency = A[self.content[i].get_top_notes()[g].name()[0:len(self.content[i].get_top_notes()[g].name())-accum]]/(2**accum)
+                    frequency = A[self.content[i].get_top_notes()[g].name()[0:len(self.content[i].get_top_notes()[g].name())-accum]]-(12**accum)
                     self.content[i].get_top_notes()[g].set_frequency(frequency)
                 else:
                     frequency = A[self.content[i].get_top_notes()[g].name()]
@@ -429,7 +428,7 @@ class Menuet:
                         if self.content[i].get_bot_notes()[g].name()[h]!='\'':
                             break
                         accum=accum+1
-                    frequency = A[self.content[i].get_bot_notes()[g].name()[0:len(self.content[i].get_bot_notes()[g].name())-accum]]*2**accum
+                    frequency = A[self.content[i].get_bot_notes()[g].name()[0:len(self.content[i].get_bot_notes()[g].name())-accum]]+12*accum
                     self.content[i].get_bot_notes()[g].set_frequency(frequency)
                 elif self.content[i].get_bot_notes()[g].name()[len(self.content[i].get_bot_notes()[g].name())-1]==',':       # bot notes with c,
                     accum=0
@@ -437,7 +436,7 @@ class Menuet:
                         if self.content[i].get_bot_notes()[g].name()[h]!=',':
                             break
                         accum=accum+1
-                    frequency = A[self.content[i].get_bot_notes()[g].name()[0:len(self.content[i].get_bot_notes()[g].name())-accum]]/(2**accum)
+                    frequency = A[self.content[i].get_bot_notes()[g].name()[0:len(self.content[i].get_bot_notes()[g].name())-accum]]-(12*accum)
                     self.content[i].get_bot_notes()[g].set_frequency(frequency)
                 else:
                     frequency = A[self.content[i].get_bot_notes()[g].name()]
