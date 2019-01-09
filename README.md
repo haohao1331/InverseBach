@@ -2,11 +2,7 @@
 ![InverseBach](images/inversebach.jpg)
 ## Sample
 Before moving on, have a taste of our wonderful machine composed music!
-<audio controls="controls">
-  <source type="audio/mp3" src="sample_audio/audio5.mp3"></source>
-  <source type="audio/ogg" src="sample_audio/audio5.ogg"></source>
-  <p>Your browser does not support the audio element.</p>
-</audio>
+[[embed url=https://www.youtube.com/watch?v=LnBMpFruItE]]
 ## Version
 1.1.0
 ## Introduction
