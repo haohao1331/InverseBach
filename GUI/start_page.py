@@ -18,8 +18,6 @@ class StartPage(Frame):
         # variables
         self.save = IntVar()
         self.save.set(0)
-        self.no_audio = IntVar()
-        self.no_audio.set(0)
         self.ly_file = StringVar()
         self.ly_file.set("<replace me>")
         self.audio_file = StringVar()
@@ -38,11 +36,7 @@ class StartPage(Frame):
 
         self.audio_sframe = SelectionFrame(self, text="Select audio file generating location")
         self.audio_sframe.pack()
-        self.no_audio_check = Checkbutton(self, text="Do not generate an audio file", variable=self.no_audio,
-                                          onvalue=1, offvalue=0,
-                                          command=lambda: self.gen_audio_toggle(self.no_audio.get()))
-        self.no_audio_check.pack()
-        self.audio_file_label = Label(self, text="Enter name of .wav audio file")
+        self.audio_file_label = Label(self, text="Enter name of .mid audio file")
         self.audio_file_label.pack()
         self.audio_file_entry = Entry(self, textvariable=self.audio_file)
         self.audio_file_entry.pack()
@@ -58,36 +52,13 @@ class StartPage(Frame):
         self.master.bind('n', self.next_item)
         self.master.bind('q', quit)
 
-    def gen_audio_toggle(self, audio_var):
-        if audio_var == 1:
-            self.audio_sframe.clear()
-            self.audio_sframe.disable()
-
-            self.tmp_audio_file = self.audio_file.get()
-            self.audio_file.set('')
-            self.audio_file_entry.config(state='disabled')
-
-        else:
-            self.audio_sframe.enable()
-            self.audio_sframe.resume()
-
-            self.audio_file_entry.config(state='normal')
-            self.audio_file.set(self.tmp_audio_file)
-
-    def gen_audio_init(self, audio_var):
-        if audio_var == 1:
-            self.audio_sframe.disable()
-            self.tmp_audio_file = ''
-            self.audio_file_entry.config(state='disabled')
-
     def next_item(self):
         error_entries = self.get_error_entries()
         if self.display_error(error_entries) == 1:
             return
 
         self.controller.ly_file = self.ly_file.get() + '.ly'
-        if self.no_audio.get() == 0:
-            self.controller.audio_file = self.audio_file.get() + '.wav'
+        self.controller.audio_file = self.audio_file.get() + '.mid'
 
         self.ly_file_entry.config(bg='white')
         self.audio_file_entry.config(bg='white')
@@ -101,10 +72,10 @@ class StartPage(Frame):
 
         err_m = "The contents in these entries are invalid\n"
         entry_name = {self.ly_file_entry: ".ly music score file name",
-                      self.audio_file_entry: ".wav audio score file name",
+                      self.audio_file_entry: ".mid audio score file name",
                       self.ly_sframe.entry: ".ly music score directory",
                       self.score_sframe.entry: ".pdf music score directory",
-                      self.audio_sframe.entry: ".wav audio file directory"
+                      self.audio_sframe.entry: ".mid audio file directory"
                       }
 
         for entry in error_entries:
@@ -118,8 +89,6 @@ class StartPage(Frame):
     def load_settings(self):
         try:
             fi = open('settings/start.setting', 'r')
-            self.no_audio.set(fi.readline()[0:-1])
-            self.gen_audio_init(self.no_audio.get())
 
             self.ly_sframe.set_dir(fi.readline()[0:-1])
             self.score_sframe.set_dir(fi.readline()[0:-1])
@@ -133,7 +102,7 @@ class StartPage(Frame):
     def save_settings(self):
         if self.save.get() == 1:
             fo = open('settings/start.setting', 'w')
-            s = f'{self.no_audio.get()}\n{self.ly_sframe.get_dir()}\n{self.score_sframe.get_dir()}\n' \
+            s = f'{self.ly_sframe.get_dir()}\n{self.score_sframe.get_dir()}\n' \
                 f'{self.audio_sframe.get_dir()}\n{self.ly_file.get()}\n{self.audio_file.get()}\n'
             fo.write(s)
 
@@ -143,12 +112,12 @@ class StartPage(Frame):
             ret.append(self.ly_sframe.entry)
         if self.score_sframe.get_dir() == '':
             ret.append(self.score_sframe.entry)
-        if self.audio_sframe.get_dir() == '' and self.no_audio.get() == 0:
+        if self.audio_sframe.get_dir() == '':
             ret.append(self.audio_sframe.entry)
 
         if not self.entry_check(self.ly_file.get()):
             ret.append(self.ly_file_entry)
-        if not self.entry_check(self.audio_file.get()) and self.no_audio.get() == 0:
+        if not self.entry_check(self.audio_file.get()):
             ret.append(self.audio_file_entry)
 
         return ret
@@ -182,19 +151,6 @@ class SelectionFrame(Frame):
         self.button = Button(self.frame, text="Select Directory",
                              command=self.select_directory)
         self.button.grid(row=0, column=1)
-
-    def enable(self):
-        self.button.config(state='normal')
-
-    def disable(self):
-        self.button.config(state='disabled')
-
-    def clear(self):
-        self.tmp_dir = self.dir.get()
-        self.dir.set('')
-
-    def resume(self):
-        self.dir.set(self.tmp_dir)
 
     def select_directory(self):
         name = filedialog.askdirectory()

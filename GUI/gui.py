@@ -56,12 +56,11 @@ class GUIMain(Tk):
 
         c = converter.Converter(m)  # init converter
 
-        # audio output if user requires
-        if f.no_audio.get() == 0:
-            sample = c.convert_to_wav(framerate=8000)
-            a = audio_generator.AudioOut(2, path=f'{audio_dir}/{audio_file}', framerate=8000)
-            a.add_sample(sample)
-            a.write_and_close()
+        # audio output
+        midi = c.convert_to_audio()
+        a = audio_generator.AudioOut(f'{audio_dir}/{audio_file}')
+        a.add_midi(midi)
+        a.write_and_close()
 
         # score output
         score = c.convert_to_score()

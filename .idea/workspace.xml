@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9254e48e-aa93-46dd-9e89-5e7f5e02cb45" name="Default Changelist" comment="" />
+    <list default="true" id="4bb78ff0-2a00-4086-936d-3625cf944a52" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/framework/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/InverseBach.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/InverseBach.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ps" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GUI/start_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/GUI/start_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/menuet.py" beforeDir="false" afterPath="$PROJECT_DIR$/framework/menuet.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/major-scale.mid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/audio_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/output/audio_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output/converter.py" beforeDir="false" afterPath="$PROJECT_DIR$/output/converter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_audio/audio.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_ly/score.ly" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sample_score/score.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings/start.setting" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -9,51 +23,40 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
+<<<<<<< HEAD
     <SUITE FILE_PATH="coverage/InverseBach$main.coverage" NAME="main Coverage Results" MODIFIED="1547005874375" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/InverseBach$test.coverage" NAME="test Coverage Results" MODIFIED="1546996288574" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/framework" />
+=======
+    <SUITE FILE_PATH="coverage/InverseBach$testmidi.coverage" NAME="testmidi Coverage Results" MODIFIED="1547002724303" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/InverseBach$main.coverage" NAME="main Coverage Results" MODIFIED="1547005570629" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+>>>>>>> f055b4d9e5e61e66413a54d2993026935fa0b2f4
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="600">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/framework/menuet.py">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="405" column="21" lean-forward="true" selection-start-line="405" selection-start-column="21" selection-end-line="405" selection-end-column="21" />
-              <folding>
-                <element signature="e#163#1482#0" />
-                <element signature="e#1562#1836#0" />
-                <element signature="e#1920#2987#0" />
-                <element signature="e#3071#4017#0" />
-                <element signature="e#4156#4565#0" />
-                <element signature="e#4659#5004#0" />
-                <element signature="e#5095#5622#0" />
-                <element signature="e#5714#6394#0" />
-                <element signature="e#6485#7601#0" />
-                <element signature="e#7697#10336#0" />
-                <element signature="e#10419#14471#0" />
-                <element signature="e#14595#17274#0" />
-                <element signature="e#17378#19497#0" />
-                <element signature="e#19575#22920#0" />
-                <element signature="e#23009#24002#0" />
-                <element signature="e#29534#30180#0" />
-                <element signature="e#30230#30788#0" />
-                <element signature="e#30823#31131#0" />
-                <element signature="e#31168#31187#0" />
-                <element signature="e#31227#31355#0" />
-                <element signature="e#31388#31403#0" />
-                <element signature="e#31441#31461#0" />
-                <element signature="e#31567#32264#0" />
-                <element signature="e#32379#33171#0" />
-                <element signature="e#33336#33760#0" />
-                <element signature="e#33911#34682#0" />
-                <element signature="e#34850#35153#0" />
-                <element signature="e#35309#36635#0" />
-                <element signature="e#36804#38835#0" />
-              </folding>
+            <state relative-caret-position="150">
+              <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sample_ly/score.ly">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/framework/note.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="3" lean-forward="true" selection-start-column="3" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -62,27 +65,94 @@
               <folding>
                 <element signature="e#50#71#0" expanded="true" />
               </folding>
+=======
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/GUI/start_page.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1605">
+              <caret line="151" column="59" lean-forward="true" selection-start-line="151" selection-start-column="59" selection-end-line="151" selection-end-column="59" />
+>>>>>>> f055b4d9e5e61e66413a54d2993026935fa0b2f4
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/framework/test.py">
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret column="21" lean-forward="true" selection-start-column="21" selection-end-column="21" />
+=======
+        <entry file="file://$PROJECT_DIR$/GUI/gui.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="40" column="34" lean-forward="true" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/output/converter.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="258">
+              <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/output/audio_generator.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/framework/menuet.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="485" column="52" selection-start-line="485" selection-start-column="44" selection-end-line="485" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/framework/measure.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1110" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/testmidi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+>>>>>>> f055b4d9e5e61e66413a54d2993026935fa0b2f4
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Python Script" />
-      </list>
-    </option>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>to_print</find>
+      <find>no_audio</find>
+      <find>frequency</find>
+      <find>resume</find>
+      <find>clear</find>
+      <find>enable</find>
+      <find>pitch</find>
+      <find>to_pr</find>
+      <find>print_no</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>pitch</replace>
+      <replace>frequency</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -90,35 +160,51 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/testmidi.py" />
+        <option value="$PROJECT_DIR$/GUI/gui.py" />
+        <option value="$PROJECT_DIR$/.idea/InverseBach.iml" />
+        <option value="$PROJECT_DIR$/GUI/start_page.py" />
+        <option value="$PROJECT_DIR$/output/audio_generator.py" />
+        <option value="$PROJECT_DIR$/framework/note.py" />
         <option value="$PROJECT_DIR$/framework/menuet.py" />
-        <option value="$PROJECT_DIR$/framework/test.py" />
+        <option value="$PROJECT_DIR$/output/converter.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="269" />
-    <option name="y" value="55" />
-    <option name="width" value="1390" />
-    <option name="height" value="1046" />
-  </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="Scope" currentSubView="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
             <path>
-              <item name="InverseBach" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InverseBach" type="462c0819:PsiDirectoryNode" />
+              <item name="InverseBach" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
             </path>
             <path>
-              <item name="InverseBach" type="b2602c69:ProjectViewProjectNode" />
-              <item name="InverseBach" type="462c0819:PsiDirectoryNode" />
-              <item name="framework" type="462c0819:PsiDirectoryNode" />
+              <item name="InverseBach" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name=".idea" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
+              <item name="InverseBach" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="framework" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="InverseBach" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="GUI" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="InverseBach" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="output" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+<<<<<<< HEAD
               <item name="InverseBach" type="b2602c69:ProjectViewProjectNode" />
               <item name="InverseBach" type="462c0819:PsiDirectoryNode" />
               <item name="GUI" type="462c0819:PsiDirectoryNode" />
@@ -147,18 +233,34 @@
               <item name="InverseBach" type="b2602c69:ProjectViewProjectNode" />
               <item name="InverseBach" type="462c0819:PsiDirectoryNode" />
               <item name="sample_score" type="462c0819:PsiDirectoryNode" />
+=======
+              <item name="InverseBach" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="sample_audio" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="InverseBach" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="sample_ly" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="InverseBach" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="sample_score" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+>>>>>>> f055b4d9e5e61e66413a54d2993026935fa0b2f4
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -195,7 +297,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="testmidi" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="InverseBach" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -203,12 +305,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/framework" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/framework/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/testmidi.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -220,7 +322,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python.test" />
+        <item itemvalue="Python.testmidi" />
       </list>
     </recent_temporary>
   </component>
@@ -229,29 +331,47 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9254e48e-aa93-46dd-9e89-5e7f5e02cb45" name="Default Changelist" comment="" />
-      <created>1546631521889</created>
+      <changelist id="4bb78ff0-2a00-4086-936d-3625cf944a52" name="Default Changelist" comment="" />
+      <created>1546628946905</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1546631521889</updated>
       <workItem from="1546631525487" duration="780000" />
       <workItem from="1546951069952" duration="2576000" />
+=======
+      <updated>1546628946905</updated>
+      <workItem from="1546628949704" duration="49000" />
+      <workItem from="1546905480949" duration="7469000" />
+      <workItem from="1547001416956" duration="4081000" />
+>>>>>>> f055b4d9e5e61e66413a54d2993026935fa0b2f4
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="3356000" />
+=======
+    <option name="totallyTimeSpent" value="11599000" />
+>>>>>>> f055b4d9e5e61e66413a54d2993026935fa0b2f4
   </component>
   <component name="ToolWindowManager">
-    <frame x="134" y="35" width="3066" height="1765" extended-state="6" />
+    <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25319007" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12285556" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3675784" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39959973" />
+=======
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32937366" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32829374" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39956802" />
+>>>>>>> f055b4d9e5e61e66413a54d2993026935fa0b2f4
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -268,50 +388,111 @@
       <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
-  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/framework/menuet.py">
+<<<<<<< HEAD
+=======
+    <entry file="file:///usr/lib/python3.7/tkinter/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="405" column="21" lean-forward="true" selection-start-line="405" selection-start-column="21" selection-end-line="405" selection-end-column="21" />
-          <folding>
-            <element signature="e#163#1482#0" />
-            <element signature="e#1562#1836#0" />
-            <element signature="e#1920#2987#0" />
-            <element signature="e#3071#4017#0" />
-            <element signature="e#4156#4565#0" />
-            <element signature="e#4659#5004#0" />
-            <element signature="e#5095#5622#0" />
-            <element signature="e#5714#6394#0" />
-            <element signature="e#6485#7601#0" />
-            <element signature="e#7697#10336#0" />
-            <element signature="e#10419#14471#0" />
-            <element signature="e#14595#17274#0" />
-            <element signature="e#17378#19497#0" />
-            <element signature="e#19575#22920#0" />
-            <element signature="e#23009#24002#0" />
-            <element signature="e#29534#30180#0" />
-            <element signature="e#30230#30788#0" />
-            <element signature="e#30823#31131#0" />
-            <element signature="e#31168#31187#0" />
-            <element signature="e#31227#31355#0" />
-            <element signature="e#31388#31403#0" />
-            <element signature="e#31441#31461#0" />
-            <element signature="e#31567#32264#0" />
-            <element signature="e#32379#33171#0" />
-            <element signature="e#33336#33760#0" />
-            <element signature="e#33911#34682#0" />
-            <element signature="e#34850#35153#0" />
-            <element signature="e#35309#36635#0" />
-            <element signature="e#36804#38835#0" />
-          </folding>
+        <state relative-caret-position="198">
+          <caret line="1704" selection-start-line="1704" selection-end-line="1704" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/framework/test.py">
+    <entry file="file://$PROJECT_DIR$/settings/start.setting">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/InverseBach.iml">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="55" selection-start-line="5" selection-start-column="55" selection-end-line="5" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/main_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="14" column="32" lean-forward="true" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/lib/python3.7/dist-packages/midiutil/MidiFile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="967" selection-start-line="967" selection-end-line="967" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/testmidi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/ly_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/note.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3" lean-forward="true" selection-start-column="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sample_ly/score.ly">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/start_page.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1605">
+          <caret line="151" column="59" lean-forward="true" selection-start-line="151" selection-start-column="59" selection-end-line="151" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GUI/gui.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="40" column="34" lean-forward="true" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/audio_generator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="21" column="34" selection-start-line="21" selection-start-column="34" selection-end-line="21" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> f055b4d9e5e61e66413a54d2993026935fa0b2f4
+    <entry file="file://$PROJECT_DIR$/framework/menuet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="485" column="52" selection-start-line="485" selection-start-column="44" selection-end-line="485" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/framework/measure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1110" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/output/converter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="258">
+          <caret line="47" column="46" selection-start-line="47" selection-start-column="46" selection-end-line="47" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state>
           <caret column="21" lean-forward="true" selection-start-column="21" selection-end-column="21" />
         </state>
@@ -324,6 +505,10 @@
           <folding>
             <element signature="e#50#71#0" expanded="true" />
           </folding>
+=======
+        <state relative-caret-position="150">
+          <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+>>>>>>> f055b4d9e5e61e66413a54d2993026935fa0b2f4
         </state>
       </provider>
     </entry>

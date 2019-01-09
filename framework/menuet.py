@@ -464,6 +464,7 @@ class Menuet:
         print("Done harmony generation")
         self.to_printable_format()
         print("Done generation")
+        # self.get_notes_name()
         return True
 
     def get(self):      # for debugging
