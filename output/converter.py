@@ -90,19 +90,19 @@ class Converter:
 
         return res
 
-    def convert_to_audio(self, tempo=60, volume=100):
-        midi = MIDIFile(1)
-        midi.addTempo(0, 0, tempo)
-        men = self.raw.get_content()
-        ttime = 0
-        btime = 0
+    def convert_to_audio(self, tempo=108, top_volume=100, bot_volume=75):
+        midi = MIDIFile(1)  # create midi object
+        midi.addTempo(0, 0, tempo)  # add menuet tempo
+        men = self.raw.get_content()  # grab menuet
+        ttime = 0  # time accumulator for top NoteList
+        btime = 0  # time accumulator for bot NoteList
         for i in range(16):
-            msr = men[i]
+            msr = men[i]  # for each measure
             for note in msr.get_top_notes():
-                midi.addNote(0, 0, note.frequency(), ttime, note.length(), volume)
-                ttime += note.length()
+                midi.addNote(0, 0, note.frequency(), ttime, note.length(), top_volume)  # add note and its length to the tempo
+                ttime += note.length()  # increment length accumulator
             for note in msr.get_bot_notes():
-                midi.addNote(0, 0, note.frequency(), btime, note.length(), volume)
+                midi.addNote(0, 0, note.frequency(), btime, note.length(), bot_volume)
                 btime += note.length()
 
         return midi
