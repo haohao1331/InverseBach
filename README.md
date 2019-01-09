@@ -1,7 +1,14 @@
 # InverseBach
 ![InverseBach](images/inversebach.jpg)
+## Sample
+Before moving on, have a taste of our wonderful machine composed music!
+<audio controls="controls">
+  <source type="audio/mp3" src="sample_audio/audio5.mp3"></source>
+  <source type="audio/ogg" src="sample_audio/audio5.ogg"></source>
+  <p>Your browser does not support the audio element.</p>
+</audio>
 ## Version
-1.0.0
+1.1.0
 ## Introduction
 A program that randomly generates user specified music. 
 ## Dependency
@@ -12,7 +19,7 @@ A program that randomly generates user specified music.
 Simply run `main.py` and follow instructions
 
 ## Limitations and Simplifications
-Generating music using an algorithm is tedeous and difficult. Thus, 
+Generating music using an algorithm is tedious and difficult. Thus, 
 some simplifications were made so that this project is possible.
 
 1. This program can only generate Baroque menuets.
