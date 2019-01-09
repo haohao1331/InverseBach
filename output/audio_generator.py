@@ -19,7 +19,7 @@ class AudioOut:
 
     def create(self, path):
         self.path = path
-        self.file = open(path, 'w')
+        self.file = open(path, 'wb')
 
     def add_midi(self, midi):
         self.midi = midi

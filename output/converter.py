@@ -42,8 +42,10 @@ class Converter:
 
             for column in range(4):
                 msr = men[row*4+column]  # grab measure
+                # print(msr.get_top_notes().print_notes_name())
 
-                for n in msr.get_top_notes():
+                for i in range(len(msr.get_top_notes())):
+                    n = msr.get_top_notes()[i]
                     res += n.name()  # add note name
                     if length != n.length():  # if encounters new length
                         length = n.length()
@@ -69,7 +71,8 @@ class Converter:
             for column in range(4):
                 msr = men[row * 4 + column]
 
-                for n in msr.get_bot_notes():
+                for i in range(len(msr.get_bot_notes())):
+                    n = msr.get_bot_notes()[i]
                     res += n.name()
                     if length != n.length():
                         length = n.length()
@@ -96,10 +99,10 @@ class Converter:
         for i in range(16):
             msr = men[i]
             for note in msr.get_top_notes():
-                midi.addNote(0, 0, note.pitch(), ttime, note.length(), volume)
+                midi.addNote(0, 0, note.frequency(), ttime, note.length(), volume)
                 ttime += note.length()
             for note in msr.get_bot_notes():
-                midi.addNote(0, 0, note.pitch(), btime, note.length(), volume)
+                midi.addNote(0, 0, note.frequency(), btime, note.length(), volume)
                 btime += note.length()
 
         return midi

@@ -72,10 +72,10 @@ class StartPage(Frame):
 
         err_m = "The contents in these entries are invalid\n"
         entry_name = {self.ly_file_entry: ".ly music score file name",
-                      self.audio_file_entry: ".wav audio score file name",
+                      self.audio_file_entry: ".mid audio score file name",
                       self.ly_sframe.entry: ".ly music score directory",
                       self.score_sframe.entry: ".pdf music score directory",
-                      self.audio_sframe.entry: ".wav audio file directory"
+                      self.audio_sframe.entry: ".mid audio file directory"
                       }
 
         for entry in error_entries:
@@ -151,19 +151,6 @@ class SelectionFrame(Frame):
         self.button = Button(self.frame, text="Select Directory",
                              command=self.select_directory)
         self.button.grid(row=0, column=1)
-
-    def enable(self):
-        self.button.config(state='normal')
-
-    def disable(self):
-        self.button.config(state='disabled')
-
-    def clear(self):
-        self.tmp_dir = self.dir.get()
-        self.dir.set('')
-
-    def resume(self):
-        self.dir.set(self.tmp_dir)
 
     def select_directory(self):
         name = filedialog.askdirectory()

@@ -1,7 +1,7 @@
 date = #(strftime "%d-%m-%Y" (localtime (current-time)))
 \header{
-title = "Menuet in B♭ Major"
+title = "Menuet in E Major"
 composer = "I. S. baCh"}
 \version "2.18.2"{\new PianoStaff 
-<< \new Staff { \time 3/4 \clef "treble" \key bes \major \tempo "Moderato" \repeat volta 2{bes'4 f'8 ees' d' bes c' d' ees'4 c'8 ees' d' c' bes4 d'8 bes c'2. \break bes'4 f'8 ees' d' f' ees' d' c'4 ees'8 g' f' ees' d'4 bes8 d' g'2. } \break \repeat volta 2{ees''4 bes'4. ees''8 f''4 aes''4. f''8 d''4 bes' d''8 bes' d''4 c''2 \break bes'4 f'8 bes' bes' a' g' c'' c''4 ees''8 g'' f'' g'' a''4 f''8 ees'' d''2. } }
-\new Staff { \clef "bass" \key bes \major bes,8 c d ees f4 ees8 f g f ees4 bes,8 c d c bes,4 f c8 a, f,4 \break bes,8 c d c bes,4 c8 d ees f g4 d8 ees f ees d4 ees bes,8 g, ees,4 \break ees8 f g4 g aes,8 bes, c bes, aes,4 bes,8 c d c bes,4 f2. \break bes,8 c d4 d ees ees8 d c bes, a, bes, c bes, a,4 bes, f, bes,, } >>}\markup{\date}
+<< \new Staff { \time 3/4 \clef "treble" \key e \major \tempo "Moderato" \repeat volta 2{e''8 ges'' aes''4 e'' a'' e''8 ees'' des''4 b' e'' b'8 a' b'2. \break e''8 b' b'4 e'' ees'' ges''8 e'' ees''4 des'' ges'' des''8 bes' b'2. } \break \repeat volta 2{b'8 ges' ges'4 b'8 ees'' des'' ees'' e'' ges'' aes'' ges'' e''4 aes'' e'' e'' ees''2 \break e''8 b' b'4 aes' a' e'8 a' a'4 ges' ees' b8 ees' aes'2. } }
+\new Staff { \clef "bass" \key e \major e4 b,8 a, aes,4 des des8 ees e4 aes, aes, aes,8 a, b, ges, ees, ges, b,,4 \break e8 ges aes4 aes ges8 e ees e ges4 bes, bes, bes, b, ges, b,, \break b,8 des ees4 ees e8 ees des ees e4 aes,8 ges, e, ges, aes, a, b,2. \break e8 ges aes ges e ees des4 des des ees8 des b, des ees4 e b,8 aes, e,4 } >>}\markup{\date}
