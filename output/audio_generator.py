@@ -10,33 +10,22 @@ from math import sin, pi
 
 class AudioOut:
 
-    def __init__(self, sampwidth, framerate=44100, nchannels=1, path=""):
+    def __init__(self, path=""):
         self.path = path  # path to file
         self.file = None  # file object
-        self.bin_str = b''  # file content
-        if path != "":
-            self._setup(path, sampwidth, framerate, nchannels)
+        self.midi = None  # midi object
+        if path != "":  # if path exists, create file object
+            self.create(path)
 
-    def _setup(self, path, sampwidth, framerate, nchannels):
+    def create(self, path):
+        self.path = path
+        self.file = open(path, 'w')
 
-        # config wave file
-        self.file = wave.open(path, 'w')
-        self.file.setnchannels(nchannels)
-        self.file.setframerate(framerate)
-        self.file.setsampwidth(sampwidth)
-        self.file.setcomptype('NONE', 'Not Compressed')
-
-    def add_sample(self, sample, clear=False):
-        if clear:
-            self.bin_str = b''  # clear content
-
-        for s in sample:
-            s = round(s*10000)
-            if -0x7fff-1 <= s <= 0x7fff:  # if s conforms to packing requirements
-                self.bin_str += struct.pack('h', s)  # pack bin_str into file
+    def add_midi(self, midi):
+        self.midi = midi
 
     def write(self):
-        self.file.writeframesraw(self.bin_str)
+        self.midi.writeFile(self.file)
 
     def close(self):
         self.file.close()
