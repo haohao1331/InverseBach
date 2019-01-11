@@ -2,8 +2,7 @@
 ![InverseBach](images/inversebach.jpg)
 ## Sample
 Before moving on, have a taste of our wonderful machine composed music!
-
-[![Sample Music Output](https://www.youtube.com/watch?v=LnBMpFruItE/0.jpg)](https://www.youtube.com/watch?v=LnBMpFruItE "InverseBach Sample Music Output")
+[![Sample Music Output](https://img.youtube.com/vi/LnBMpFruItE/0.jpg)](https://www.youtube.com/watch?v=LnBMpFruItE)
 ## Version
 1.1.0
 ## Introduction
