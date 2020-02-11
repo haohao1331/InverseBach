@@ -11,7 +11,7 @@ A program that randomly generates user specified music.
 * python3, command: `sudo apt-get install python3`
 * GNU Lilypond, command: `sudo apt-get install lilypond`
 * python3-tk, command: `sudo apt-get install python3-tk`
-* python3-MIDIUtil, command: `pip install MIDIUtil`
+* python3-MIDIUtil, command: `pip3 install MIDIUtil`
 ## Run
 Simply run `main.py` and follow instructions
 
